@@ -8,6 +8,8 @@ const PizzaList = () => {
 
     useEffect(() => {
         dispatch(fetchPizza());
+
+        document.title = "Pizza";
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
@@ -21,6 +23,7 @@ const PizzaList = () => {
                 <>
                     {pizza.map((item) => (
                         <PizzaItem
+                            imageUrl={item.image}
                             id={item.id}
                             title={item.title}
                             key={item.id}
