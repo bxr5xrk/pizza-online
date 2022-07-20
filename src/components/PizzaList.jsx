@@ -1,13 +1,14 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getPizza } from "../api/PizzaService";
-import { fetchPizzaItems, setPizza } from "../store/slices/pizzaSlice";
+import { fetchPizza } from "../api/PizzaService";
+import PizzaItem from "./PizzaItem/PizzaItem";
 
 const PizzaList = () => {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        dispatch(fetchPizzaItems());
+        dispatch(fetchPizza());
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     const { pizza, status } = useSelector((state) => state.pizzaSlice);
@@ -18,9 +19,13 @@ const PizzaList = () => {
                 <p>loading</p>
             ) : (
                 <>
-                    <button onClick={() => getPizza(setPizza)}>click</button>
-                    {pizza.map((i) => (
-                        <p key={i.id}>{i.title}</p>
+                    {pizza.map((item) => (
+                        <PizzaItem
+                            id={item.id}
+                            title={item.title}
+                            key={item.id}
+                            price={item.price}
+                        />
                     ))}
                 </>
             )}

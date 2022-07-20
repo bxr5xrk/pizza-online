@@ -4,7 +4,7 @@ const SortingTypes = () => {
 
     return (
         <div>
-            
+            sortingTypes
         </div>
     )
 }
