@@ -13,7 +13,7 @@ function App() {
 
             <Routes>
                 <Route path="/" element={<Home />} />
-                <Route path="/pizza" element={<PizzasPage />} />
+                <Route path="/pizzas/p=:pageParams" element={<PizzasPage />} />
                 <Route path="/pizza/:id" element={<PizzaPage />} />
                 <Route path="*" element={<Page404 />} />
             </Routes>

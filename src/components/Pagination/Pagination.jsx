@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate, useParams } from "react-router-dom";
 import { getTotalPizzaCount } from "../../api/PizzaService";
 import { setPage } from "../../store/slices/pizzaSlice";
 import st from "./Pagination.module.css";
@@ -7,14 +8,21 @@ import st from "./Pagination.module.css";
 const Pagination = () => {
     const [totalPages, setTotalPages] = useState(1);
     const { limitItems, page } = useSelector((state) => state.pizzaSlice);
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+    const { pageParams } = useParams();
 
     useEffect(() => {
         getTotalPizzaCount(setTotalPages);
     }, []);
 
-    const pages = Math.ceil(totalPages / limitItems);
+    useEffect(() => {
+        dispatch(setPage(Number(pageParams)));
 
-    const dispatch = useDispatch();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [pageParams]);
+
+    const pages = Math.ceil(totalPages / limitItems);
 
     const changePage = (page, variant) => {
         if (variant === "previous") {
@@ -24,6 +32,7 @@ const Pagination = () => {
         } else {
             dispatch(setPage(page));
         }
+        navigate(`../pizzas/p=${page}`);
     };
 
     return (

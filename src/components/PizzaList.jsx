@@ -3,17 +3,19 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchPizza } from "../api/PizzaService";
 import PizzaItem from "./PizzaItem/PizzaItem";
 import Pagination from "./Pagination/Pagination";
+import { useParams } from "react-router-dom";
 
 const PizzaList = () => {
     const dispatch = useDispatch();
 
-    const { page } = useSelector((state) => state.pizzaSlice);
+    const { pageParams } = useParams();
 
     useEffect(() => {
-        dispatch(fetchPizza(page));
+        dispatch(fetchPizza(pageParams));
+
         document.title = "Pizza";
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [page]);
+    }, [pageParams]);
 
     const { pizza, status } = useSelector((state) => state.pizzaSlice);
 

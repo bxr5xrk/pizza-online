@@ -20,7 +20,7 @@ const PizzaPage = () => {
             <img src={pizza.image} alt={pizza.title} width="250" height="250" />
             <h2>{pizza.title}</h2>
             <h4>{pizza.price}</h4>
-            <Link to="/pizza">all pizza</Link>
+            <Link to="/pizzas/p=1">all pizza</Link>
         </div>
     );
 };

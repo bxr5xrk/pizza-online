@@ -6,7 +6,7 @@ const Header = () => {
         <header>
             <span>logo</span>
             <Link to="/">pizza-online</Link>
-            <Link to="/pizza">pizza</Link>
+            <Link to="/pizzas/p=1">pizza</Link>
         </header>
     );
 };
