@@ -1,12 +1,13 @@
 import React from "react";
+import PizzaSearch from "../PizzaSearch/PizzaSearch";
 
 const SortingTypes = () => {
-
     return (
         <div>
-            sortingTypes
+            <PizzaSearch />
+            PizzaCategories PizzaSort
         </div>
-    )
-}
+    );
+};
 
-export default SortingTypes
+export default SortingTypes;

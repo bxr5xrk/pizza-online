@@ -6,11 +6,20 @@ const API_URL = "https://62a1db14cd2e8da9b0fca398.mockapi.io/pizza";
 export const fetchPizza = createAsyncThunk(
     "pizza/fetchPizzaStatus",
 
-    async (p) => {
-        const { data } = await axios.get(API_URL + `?page=${p}&limit=3`);
+    async ({ pageParams }) => {
+        const { data } = await axios.get(
+            API_URL + `?page=${pageParams}&limit=3`
+        );
         return data;
     }
 );
+
+export const searchPizza = async (delayedSearchValue, setData) => {
+    const search = delayedSearchValue ? `?search=${delayedSearchValue}` : "";
+
+    const { data } = await axios.get(API_URL + `${search}`);
+    return setData(data);
+};
 
 export const getTotalPizzaCount = async (setData) => {
     const { data } = await axios.get(API_URL);

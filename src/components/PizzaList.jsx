@@ -11,7 +11,7 @@ const PizzaList = () => {
     const { pageParams } = useParams();
 
     useEffect(() => {
-        dispatch(fetchPizza(pageParams));
+        dispatch(fetchPizza({ pageParams }));
 
         document.title = "Pizza";
         // eslint-disable-next-line react-hooks/exhaustive-deps
