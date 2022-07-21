@@ -4,6 +4,8 @@ import { fetchPizza } from "../../api/PizzaService";
 const initialState = {
     pizza: [],
     status: "",
+    page: 1,
+    limitItems: 3,
 };
 
 export const pizzaSlice = createSlice({
@@ -12,6 +14,9 @@ export const pizzaSlice = createSlice({
     reducers: {
         setPizza(state, action) {
             state.pizza = action.payload;
+        },
+        setPage(state, action) {
+            state.page = action.payload;
         },
     },
     extraReducers: {
@@ -30,6 +35,6 @@ export const pizzaSlice = createSlice({
     },
 });
 
-export const { setPizza } = pizzaSlice.actions;
+export const { setPizza, setPage } = pizzaSlice.actions;
 
 export default pizzaSlice.reducer;
