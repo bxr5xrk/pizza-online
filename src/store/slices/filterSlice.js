@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
     selectedCategory: 0,
-    sortType: { name: "за популярністю", sortProp: "rating" },
+    selectedSort: { name: "за популярністю", sortProp: "rating" },
     searchValue: "",
     categories: [
         "Всі",
@@ -11,6 +11,12 @@ const initialState = {
         "Гриль",
         "Гострі",
         "Закриті",
+    ],
+    sorting: [
+        { name: "за популярністю", sortProp: "rating" },
+        { name: "від дорогих до дешевих", sortProp: "price" },
+        { name: "від дешевих до дорогих", sortProp: "-price" },
+        { name: "за алфавітом", sortProp: "title" },
     ],
 };
 
@@ -21,9 +27,9 @@ const filterSlice = createSlice({
         setCategory(state, action) {
             state.selectedCategory = action.payload;
         },
-        // setSortType(state, action) {
-        //     state.sortType = action.payload;
-        // },
+        setSort(state, action) {
+            state.selectedSort = action.payload;
+        },
         // onChangePage(state, action) {
         //     state.page = action.payload;
         // },
@@ -51,6 +57,7 @@ export const {
     // setSearch,
     setSearchValue,
     setCategory,
+    setSort,
 } = filterSlice.actions;
 
 export default filterSlice.reducer;

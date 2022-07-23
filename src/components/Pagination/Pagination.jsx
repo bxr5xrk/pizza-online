@@ -6,15 +6,16 @@ import { setPage } from "../../store/slices/pizzaSlice";
 import st from "./Pagination.module.css";
 
 const Pagination = () => {
-    const [totalPages, setTotalPages] = useState(1);
+    const [totalPages, setTotalPages] = useState();
     const { limitItems, page } = useSelector((state) => state.pizzaSlice);
+    const { selectedCategory } = useSelector((state) => state.filterSlice);
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const { pageParams } = useParams();
 
     useEffect(() => {
-        getTotalPizzaCount(setTotalPages);
-    }, []);
+        getTotalPizzaCount(setTotalPages, selectedCategory);
+    }, [selectedCategory]);
 
     useEffect(() => {
         dispatch(setPage(Number(pageParams)));
@@ -37,34 +38,41 @@ const Pagination = () => {
 
     return (
         <div className={st.pagination}>
-            <span
-                className={`${st.page} ${page === 1 ? st.inactive : ""}`}
-                onClick={() => changePage(page, "previous")}
-            >
-                {"<"}
-            </span>
-
-            {pages > 1 &&
-                [...new Array(pages)].map((_, p) => (
+            {pages > 1 && (
+                <>
                     <span
-                        onClick={() => changePage(p + 1, "var")}
-                        className={
-                            p + 1 === page
-                                ? `${st.page} ${st.page__selected}`
-                                : st.page
-                        }
-                        key={p}
+                        className={`${st.page} ${
+                            page === 1 ? st.inactive : ""
+                        }`}
+                        onClick={() => changePage(page, "previous")}
                     >
-                        {p + 1}
+                        {"<"}
                     </span>
-                ))}
 
-            <span
-                className={`${st.page} ${page === pages && st.inactive}`}
-                onClick={() => changePage(page, "next")}
-            >
-                {">"}
-            </span>
+                    {[...new Array(pages)].map((_, p) => (
+                        <span
+                            onClick={() => changePage(p + 1, "var")}
+                            className={
+                                p + 1 === page
+                                    ? `${st.page} ${st.page__selected}`
+                                    : st.page
+                            }
+                            key={p}
+                        >
+                            {p + 1}
+                        </span>
+                    ))}
+
+                    <span
+                        className={`${st.page} ${
+                            page === pages && st.inactive
+                        }`}
+                        onClick={() => changePage(page, "next")}
+                    >
+                        {">"}
+                    </span>
+                </>
+            )}
         </div>
     );
 };

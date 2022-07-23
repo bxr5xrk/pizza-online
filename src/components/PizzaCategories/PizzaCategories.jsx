@@ -1,20 +1,22 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { setCategory } from "../../store/slices/filterSlice";
+import { setPage } from "../../store/slices/pizzaSlice";
 
 const PizzaCategories = () => {
     const { selectedCategory, categories } = useSelector(
         (state) => state.filterSlice
     );
+    const navigate = useNavigate();
 
     const dispatch = useDispatch();
     const onClickCategory = (id) => dispatch(setCategory(id));
 
-    // const setPage = (page) => dispatch(setPage(page));
-
     const onChangeValue = (i) => {
         onClickCategory(i);
-        // setPage(1);
+        dispatch(setPage(1));
+        navigate(`../pizzas/p=1`);
     };
 
     return (
