@@ -7,15 +7,16 @@ import { useParams } from "react-router-dom";
 
 const PizzaList = () => {
     const dispatch = useDispatch();
+    const { selectedCategory } = useSelector((state) => state.filterSlice);
 
     const { pageParams } = useParams();
 
     useEffect(() => {
-        dispatch(fetchPizza({ pageParams }));
+        dispatch(fetchPizza({ pageParams, selectedCategory }));
 
         document.title = "Pizza";
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [pageParams]);
+    }, [pageParams, selectedCategory]);
 
     const { pizza, status } = useSelector((state) => state.pizzaSlice);
 

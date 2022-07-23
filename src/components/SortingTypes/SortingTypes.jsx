@@ -1,11 +1,13 @@
 import React from "react";
+import PizzaCategories from "../PizzaCategories/PizzaCategories";
 import PizzaSearch from "../PizzaSearch/PizzaSearch";
 
 const SortingTypes = () => {
     return (
         <div>
             <PizzaSearch />
-            PizzaCategories PizzaSort
+            <PizzaCategories />
+            PizzaSort
         </div>
     );
 };

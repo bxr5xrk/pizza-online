@@ -6,9 +6,12 @@ const API_URL = "https://62a1db14cd2e8da9b0fca398.mockapi.io/pizza";
 export const fetchPizza = createAsyncThunk(
     "pizza/fetchPizzaStatus",
 
-    async ({ pageParams }) => {
+    async ({ pageParams, selectedCategory }) => {
+        const category =
+            selectedCategory === 0 ? "" : `&category=${selectedCategory}`;
+
         const { data } = await axios.get(
-            API_URL + `?page=${pageParams}&limit=3`
+            API_URL + `?page=${pageParams}&limit=3${category}`
         );
         return data;
     }

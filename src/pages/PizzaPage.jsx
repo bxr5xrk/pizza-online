@@ -1,12 +1,16 @@
 import React, { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
 import { Link, useParams } from "react-router-dom";
 import { fetchPizzaItem } from "../api/PizzaService";
+import { setSearchValue } from "../store/slices/filterSlice";
 
 const PizzaPage = () => {
     const { id } = useParams();
     const [pizza, setPizza] = useState({});
+    const dispatch = useDispatch();
 
     useEffect(() => {
+        dispatch(setSearchValue(""));
         fetchPizzaItem(id, setPizza);
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
