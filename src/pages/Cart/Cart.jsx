@@ -1,31 +1,37 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import CartItem from "../../components/CartItem/CartItem";
+import { clearCart } from "../../store/slices/cartSlice";
 
 const Cart = () => {
-    const { cartItems, totalPrice } = useSelector((state) => state.cartSlice);
+    const dispatch = useDispatch();
+    const { totalPrice, cartItems } = useSelector((state) => state.cartSlice);
+    const itemsCount = cartItems.reduce((total, i) => total + i.count, 0);
 
     return (
         <div>
-            <h2>remove all</h2>
             {cartItems.length ? (
-                cartItems.map((i) => (
-                    <CartItem
-                        key={i.id}
-                        title={i.title}
-                        count={i.count}
-                        image={i.image}
-                        size={i.size}
-                        edge={i.edge}
-                        price={i.price}
-                    />
-                ))
+                <>
+                    <h2 onClick={() => dispatch(clearCart())}>remove all</h2>
+                    {cartItems.map((i) => (
+                        <CartItem
+                            key={i.id + i.price}
+                            id={i.id}
+                            title={i.title}
+                            count={i.count}
+                            image={i.image}
+                            size={i.size}
+                            edge={i.edge}
+                            price={i.price}
+                        />
+                    ))}
+                    <h2>кільксть: {itemsCount}</h2>
+                    <h2>total price: {totalPrice}</h2>
+                    <h2>на головну</h2>
+                </>
             ) : (
                 <h2>nothing</h2>
             )}
-            <h2>кільксть</h2>
-            <h2>total price: {totalPrice}</h2>
-            <h2>на головну</h2>
         </div>
     );
 };

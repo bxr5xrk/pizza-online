@@ -9,7 +9,7 @@ const findPizza = (state, action) =>
         (i) =>
             i.id === action.payload.id &&
             i.size === action.payload.size &&
-            i.pizzaType === action.payload.pizzaType
+            i.edge === action.payload.edge
     );
 
 const calculatePrice = (state) => {
@@ -23,16 +23,46 @@ export const cartSlice = createSlice({
     name: "cart",
     initialState,
     reducers: {
+        // add to cart
         addPizzaToCart(state, action) {
             const pizza = findPizza(state, action);
 
-            pizza ? pizza.count++ : state.cartItems.push({ ...action.payload });
+            pizza
+                ? pizza.count++
+                : state.cartItems.push({ ...action.payload, count: 1 });
 
             calculatePrice(state);
+        },
+        // remove from cart
+        removePizzaFromCart(state, action) {
+            const pizza = findPizza(state, action);
+
+            state.cartItems = state.cartItems.filter((i) => i !== pizza);
+
+            calculatePrice(state);
+        },
+
+        cartItemDecrement(state, action) {
+            const pizza = findPizza(state, action);
+
+            pizza.count > 1
+                ? pizza.count--
+                : cartSlice.caseReducers.removePizzaFromCart(state, action);
+
+            calculatePrice(state);
+        },
+        clearCart(state) {
+            state.cartItems = [];
+            state.totalPrice = 0;
         },
     },
 });
 
-export const { addPizzaToCart } = cartSlice.actions;
+export const {
+    addPizzaToCart,
+    cartItemDecrement,
+    removePizzaFromCart,
+    clearCart,
+} = cartSlice.actions;
 
 export default cartSlice.reducer;

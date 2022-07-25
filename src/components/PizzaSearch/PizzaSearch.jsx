@@ -21,7 +21,6 @@ const PizzaSearch = () => {
         if (searchValue.length > 0) {
             searchPizza(delayedSearchValue, setPizza);
             setSearchValue(delayedSearchValue);
-            console.log(1);
         }
         // delayedSearchValue === "" && setPizza([]);
         // eslint-disable-next-line react-hooks/exhaustive-deps
