@@ -31,7 +31,7 @@ const PizzaList = () => {
                 <>
                     {pizza.map((item) => (
                         <PizzaItem
-                            imageUrl={item.image}
+                            image={item.image}
                             id={item.id}
                             title={item.title}
                             key={item.id}

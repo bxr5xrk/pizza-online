@@ -1,14 +1,40 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { addPizzaToCart } from "../../store/slices/cartSlice";
 
-const PizzaSizeAndType = ({ sizes, edges }) => {
+const PizzaSizeAndType = ({ sizes, edges, id, title, image }) => {
     const edgePrice = 20;
     const [sizeActive, setSizeActive] = useState(0);
     const [edgeActive, setEdgeActive] = useState(0);
+    const dispatch = useDispatch();
 
     const pizzaPrice =
         edgeActive === 1
             ? sizes[sizeActive].price + edgePrice
             : sizes[sizeActive].price;
+
+    const selectPizza = () => {
+        console.log({
+            title,
+            id,
+            image,
+            edge: edges[edgeActive],
+            size: sizes[sizeActive].size,
+            price: pizzaPrice,
+            count: 1,
+        });
+        dispatch(
+            addPizzaToCart({
+                title,
+                id,
+                image,
+                edges: edges[edgeActive],
+                size: sizes[sizeActive].size,
+                price: pizzaPrice,
+                count: 1,
+            })
+        );
+    };
 
     return (
         <div>
@@ -35,7 +61,7 @@ const PizzaSizeAndType = ({ sizes, edges }) => {
                     </li>
                 ))}
             </ul>
-
+            <button onClick={selectPizza}>додати {1}</button>
             <h4>{pizzaPrice}</h4>
         </div>
     );

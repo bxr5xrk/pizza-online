@@ -1,12 +1,12 @@
 import React from "react";
 
-const CartItem = () => {
-
+const CartItem = ({ title, count }) => {
     return (
         <div>
-            cart item
+            {title}
+            <h3>{count}</h3>
         </div>
-    )
-}
+    );
+};
 
-export default CartItem
+export default CartItem;

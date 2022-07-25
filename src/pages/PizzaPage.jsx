@@ -27,7 +27,13 @@ const PizzaPage = () => {
             <Link to="/pizzas/p=1">all pizza</Link>
 
             {pizza.sizes && pizza.edges && (
-                <PizzaSizeAndType sizes={pizza.sizes} edges={pizza.edges} />
+                <PizzaSizeAndType
+                    sizes={pizza.sizes}
+                    edges={pizza.edges}
+                    id={id}
+                    title={pizza.title}
+                    image={pizza.image}
+                />
             )}
         </div>
     );
