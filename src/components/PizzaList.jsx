@@ -10,7 +10,6 @@ const PizzaList = () => {
     const { selectedCategory, selectedSort } = useSelector(
         (state) => state.filterSlice
     );
-
     const { pageParams } = useParams();
 
     useEffect(() => {
@@ -36,7 +35,8 @@ const PizzaList = () => {
                             id={item.id}
                             title={item.title}
                             key={item.id}
-                            price={item.price}
+                            edges={item.edges}
+                            sizes={item.sizes}
                         />
                     ))}
                 </>

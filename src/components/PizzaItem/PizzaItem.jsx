@@ -1,8 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import PizzaSizeAndType from "../PizzaSizeAndType/PizzaSizeAndType";
 
-const PizzaItem = ({ id, title, price, imageUrl }) => {
-
+const PizzaItem = ({ id, title, imageUrl, edges, sizes }) => {
     return (
         <div>
             <Link to={`/pizza/${id}`}>
@@ -10,7 +10,7 @@ const PizzaItem = ({ id, title, price, imageUrl }) => {
                 <img src={imageUrl} alt={title} width="250" height="250" />
             </Link>
 
-            <h4>{price}</h4>
+            <PizzaSizeAndType sizes={sizes} edges={edges} />
         </div>
     );
 };

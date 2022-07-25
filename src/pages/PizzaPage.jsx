@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { Link, useParams } from "react-router-dom";
 import { fetchPizzaItem } from "../api/PizzaService";
+import PizzaSizeAndType from "../components/PizzaSizeAndType/PizzaSizeAndType";
 import { setSearchValue } from "../store/slices/filterSlice";
 
 const PizzaPage = () => {
@@ -23,8 +24,11 @@ const PizzaPage = () => {
         <div>
             <img src={pizza.image} alt={pizza.title} width="250" height="250" />
             <h2>{pizza.title}</h2>
-            <h4>{pizza.price}</h4>
             <Link to="/pizzas/p=1">all pizza</Link>
+
+            {pizza.sizes && pizza.edges && (
+                <PizzaSizeAndType sizes={pizza.sizes} edges={pizza.edges} />
+            )}
         </div>
     );
 };
