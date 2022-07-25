@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addPizzaToCart } from "../../store/slices/cartSlice";
 
 const PizzaSizeAndType = ({ sizes, edges, id, title, image }) => {
@@ -7,6 +7,7 @@ const PizzaSizeAndType = ({ sizes, edges, id, title, image }) => {
     const [sizeActive, setSizeActive] = useState(0);
     const [edgeActive, setEdgeActive] = useState(0);
     const dispatch = useDispatch();
+    // const { cartItems } = useSelector((state) => state.cartSlice);
 
     const pizzaPrice =
         edgeActive === 1
@@ -36,6 +37,15 @@ const PizzaSizeAndType = ({ sizes, edges, id, title, image }) => {
         );
     };
 
+    const cartItem = useSelector((state) =>
+        state.cartSlice.cartItems.find(
+            (obj) =>
+                id === obj.id &&
+                sizes[sizeActive].size === obj.size &&
+                edges[edgeActive] === obj.edges
+        )
+    );
+
     return (
         <div>
             <ul>
@@ -61,7 +71,9 @@ const PizzaSizeAndType = ({ sizes, edges, id, title, image }) => {
                     </li>
                 ))}
             </ul>
-            <button onClick={selectPizza}>додати {1}</button>
+            <button onClick={selectPizza}>
+                додати {cartItem && cartItem.count > 0 ? cartItem.count : 0}
+            </button>
             <h4>{pizzaPrice}</h4>
         </div>
     );

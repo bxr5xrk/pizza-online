@@ -9,7 +9,17 @@ const Cart = () => {
         <div>
             <h2>remove all</h2>
             {cartItems.length ? (
-                cartItems.map((i) => <CartItem key={i.id} title={i.title} count={i.count} />)
+                cartItems.map((i) => (
+                    <CartItem
+                        key={i.id}
+                        title={i.title}
+                        count={i.count}
+                        image={i.image}
+                        size={i.size}
+                        edge={i.edge}
+                        price={i.price}
+                    />
+                ))
             ) : (
                 <h2>nothing</h2>
             )}

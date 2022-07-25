@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
     cartItems: [],
-    totalPrice: 1,
+    totalPrice: 0,
 };
 const findPizza = (state, action) =>
     state.cartItems.find(
