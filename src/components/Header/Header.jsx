@@ -7,6 +7,7 @@ const Header = () => {
             <span>logo</span>
             <Link to="/">pizza-online</Link>
             <Link to="/pizzas/p=1">pizza</Link>
+            <Link to="/cart">cart</Link>
         </header>
     );
 };
