@@ -26,7 +26,7 @@ const Cart = () => {
                         />
                     ))}
                     <h2>кільксть: {itemsCount}</h2>
-                    <h2>total price: {totalPrice}</h2>
+                    <h2>total price: {totalPrice} грн</h2>
                     <h2>на головну</h2>
                 </>
             ) : (

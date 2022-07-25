@@ -2,13 +2,12 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import { getTotalPizzaCount } from "../../api/PizzaService";
-import { setPage } from "../../store/slices/pizzaSlice";
+import { setPage } from "../../store/slices/filterSlice";
 import st from "./Pagination.module.css";
 
 const Pagination = () => {
     const [totalPages, setTotalPages] = useState();
-    const { limitItems, page } = useSelector((state) => state.pizzaSlice);
-    const { selectedCategory } = useSelector((state) => state.filterSlice);
+    const { selectedCategory ,limitItems, page} = useSelector((state) => state.filterSlice);
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const { pageParams } = useParams();

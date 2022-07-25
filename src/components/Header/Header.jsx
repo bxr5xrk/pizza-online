@@ -8,11 +8,14 @@ const Header = () => {
 
     return (
         <header>
-            <span>logo</span>
-            <Link to="/">pizza-online</Link>
+            <Link to="/">
+                <span>logo</span>
+                pizza-online
+            </Link>
+
             <Link to="/pizzas/p=1">pizza</Link>
             <Link to="/cart">
-                cart {totalPrice} {itemsCount}
+                cart {totalPrice} грн {itemsCount}
             </Link>
         </header>
     );

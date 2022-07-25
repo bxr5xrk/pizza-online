@@ -18,6 +18,8 @@ const initialState = {
         { name: "від дешевих до дорогих", sortProp: "-price" },
         { name: "за алфавітом", sortProp: "title" },
     ],
+    page: 1,
+    limitItems: 3,
 };
 
 const filterSlice = createSlice({
@@ -30,34 +32,18 @@ const filterSlice = createSlice({
         setSort(state, action) {
             state.selectedSort = action.payload;
         },
-        // onChangePage(state, action) {
-        //     state.page = action.payload;
-        // },
-        // onChangeSearchValue(state, action) {
-        //     state.searchValue = action.payload;
-        // },
-        // setSearch(state, action) {
-        //     state.page = Number(action.payload.page);
-        //     state.sortType = action.payload.sortType;
-        //     state.categoryId = Number(action.payload.categoryId);
-        // },
         setSearchValue(state, action) {
             state.searchValue = action.payload;
+        },
+        setPage(state, action) {
+            state.page = action.payload;
         },
     },
 });
 
 export const selectFilter = (state) => state.filterSlice;
 
-export const {
-    // setCategoryId,
-    // setSortType,
-    // onChangePage,
-    // onChangeSearchValue,
-    // setSearch,
-    setSearchValue,
-    setCategory,
-    setSort,
-} = filterSlice.actions;
+export const { setSearchValue, setCategory, setSort, setPage } =
+    filterSlice.actions;
 
 export default filterSlice.reducer;
