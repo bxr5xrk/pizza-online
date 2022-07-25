@@ -7,7 +7,7 @@ import { useParams } from "react-router-dom";
 
 const PizzaList = () => {
     const dispatch = useDispatch();
-    const { selectedCategory, selectedSort } = useSelector(
+    const { selectedSort, selectedCategory } = useSelector(
         (state) => state.filterSlice
     );
     const { pageParams } = useParams();

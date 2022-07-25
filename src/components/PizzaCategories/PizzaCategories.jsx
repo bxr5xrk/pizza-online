@@ -8,10 +8,9 @@ const PizzaCategories = () => {
         (state) => state.filterSlice
     );
     const navigate = useNavigate();
-
     const dispatch = useDispatch();
-    const onClickCategory = (id) => dispatch(setCategory(id));
 
+    const onClickCategory = (id) => dispatch(setCategory(id));
     const onChangeValue = (i) => {
         onClickCategory(i);
         dispatch(setPage(1));

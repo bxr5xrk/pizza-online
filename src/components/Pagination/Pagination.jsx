@@ -7,7 +7,9 @@ import st from "./Pagination.module.css";
 
 const Pagination = () => {
     const [totalPages, setTotalPages] = useState();
-    const { selectedCategory ,limitItems, page} = useSelector((state) => state.filterSlice);
+    const { selectedCategory, limitItems, page } = useSelector(
+        (state) => state.filterSlice
+    );
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const { pageParams } = useParams();

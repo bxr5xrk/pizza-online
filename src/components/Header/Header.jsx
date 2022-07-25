@@ -13,7 +13,7 @@ const Header = () => {
                 pizza-online
             </Link>
 
-            <Link to="/pizzas/p=1">pizza</Link>
+            <Link to="/pizzas/p=1&category=0">pizza</Link>
             <Link to="/cart">
                 cart {totalPrice} грн {itemsCount}
             </Link>

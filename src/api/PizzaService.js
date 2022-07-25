@@ -30,7 +30,7 @@ export const searchPizza = async (delayedSearchValue, setData) => {
 
 export const getTotalPizzaCount = async (setData, selectedCategory) => {
     const category =
-        selectedCategory === 0 ? "" : `?category=${selectedCategory}`;
+        Number(selectedCategory) === 0 ? "" : `?category=${selectedCategory}`;
 
     const { data } = await axios.get(API_URL + category);
     return setData(data.length);
