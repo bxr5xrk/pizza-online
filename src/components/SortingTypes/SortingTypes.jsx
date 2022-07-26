@@ -2,14 +2,15 @@ import React from "react";
 import PizzaCategories from "../PizzaCategories/PizzaCategories";
 import PizzaSearch from "../PizzaSearch/PizzaSearch";
 import PizzaSort from "../PizzaSort/PizzaSort";
+import st from "./SortingTypes.module.scss";
 
 const SortingTypes = () => {
     return (
-        <div>
+        <nav className={st.wrapper}>
             <PizzaSearch />
             <PizzaCategories />
             <PizzaSort />
-        </div>
+        </nav>
     );
 };
 

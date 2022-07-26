@@ -1,7 +1,5 @@
 .icon {
-    fill: aliceblue;
-    width: 20px;
-    height: 20px;
+    fill: var(--black);
 }
 
 .wrapper {
@@ -20,33 +18,18 @@
 }
 
 .input {
-    margin-top: 100px;
+    margin-top: 20px;
     line-height: 28px;
     border: 2px solid transparent;
-    border-bottom-color: #7a9cc6;
-    outline: none;
+    border-bottom-color: var(--orange);
     background-color: transparent;
-    color: #7a9cc6;
-    font-size: 30px;
-    padding: 20px;
+    color: var(--orange);
+    font-size: 25px;
     transition: .3s cubic-bezier(0.645, 0.045, 0.355, 1);
-}
-
-.input:focus, input:hover {
     outline: none;
-    padding: .2rem 1rem;
     border-radius: 1rem;
-    border-color: #7a9cc6;
+    border-color: var(--orange);
     padding: 20px;
-}
-
-.input::placeholder {
-    color: #777;
-}
-   
-.input:focus::placeholder {
-    opacity: 0;
-    transition: opacity .3s;
 }
 
 .dropdown {
@@ -55,5 +38,5 @@
 }
 
 .dropdown p {
-    color: #7a9cc6;
+    color: var(--orange);
 }

@@ -21,19 +21,17 @@ const PizzaCategories = () => {
     };
 
     return (
-        <nav className={st.categories}>
-            <ul>
-                {categories.map((category, i) => (
-                    <li
-                        onClick={() => onChangeValue(i)}
-                        className={selectedCategory === i ? `${st.active}` : ""}
-                        key={i}
-                    >
-                        {category}
-                    </li>
-                ))}
-            </ul>
-        </nav>
+        <ul className={st.categories}>
+            {categories.map((category, i) => (
+                <li
+                    onClick={() => onChangeValue(i)}
+                    className={selectedCategory === i ? `${st.active}` : ""}
+                    key={i}
+                >
+                    {category}
+                </li>
+            ))}
+        </ul>
     );
 };
 
