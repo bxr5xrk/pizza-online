@@ -7,7 +7,7 @@ const API_URL = "https://62d8222f9c8b5185c783bcb2.mockapi.io/pizza";
 export const fetchPizza = createAsyncThunk(
     "pizza/fetchPizzaStatus",
 
-    async ({ pageParams, selectedCategory, sortBy }) => {
+    async ({ pageParams, selectedCategory, sortBy, limitItems }) => {
         const category =
             selectedCategory === 0 ? "" : `&category=${selectedCategory}`;
         const sort = sortBy.replace("-", "");
@@ -15,7 +15,7 @@ export const fetchPizza = createAsyncThunk(
 
         const { data } = await axios.get(
             API_URL +
-                `?page=${pageParams}&limit=3${category}&sortby=${sort}&order=${sortOrder}`
+                `?page=${pageParams}&limit=${limitItems}${category}&sortby=${sort}&order=${sortOrder}`
         );
         return data;
     }

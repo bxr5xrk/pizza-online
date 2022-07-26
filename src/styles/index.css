@@ -60,6 +60,7 @@ a, a::after {
     --black: #232323;
     --gray-line: #f6f6f6;
     --orange: #fe5f1e;
+    --gray: #858585;
 }
 
 body {

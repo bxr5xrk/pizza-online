@@ -1,20 +1,24 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchPizza } from "../api/PizzaService";
-import PizzaItem from "./PizzaItem/PizzaItem";
+import { fetchPizza } from "../../api/PizzaService";
+import PizzaItem from "../PizzaItem/PizzaItem";
 import { useParams } from "react-router-dom";
-import { selectFilter } from "../store/slices/filterSlice";
-import { selectPizza } from "../store/slices/pizzaSlice";
+import { selectFilter } from "../../store/slices/filterSlice";
+import { selectPizza } from "../../store/slices/pizzaSlice";
+import st from "./PizzaList.module.scss";
 
 const PizzaList = () => {
     const dispatch = useDispatch();
-    const { selectedSort, selectedCategory } = useSelector(selectFilter);
+    const { selectedSort, selectedCategory, limitItems } =
+        useSelector(selectFilter);
     const { pizza, status } = useSelector(selectPizza);
     const { pageParams } = useParams();
 
     useEffect(() => {
         const sortBy = selectedSort.sortProp;
-        dispatch(fetchPizza({ pageParams, selectedCategory, sortBy }));
+        dispatch(
+            fetchPizza({ pageParams, selectedCategory, sortBy, limitItems })
+        );
 
         document.title = "Pizza";
         // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -25,11 +29,12 @@ const PizzaList = () => {
     }
 
     return (
-        <div>
+        <>
+            <h1 className={st.title}>Піца</h1>
             {status === "loading" ? (
                 <p>loading</p>
             ) : (
-                <>
+                <div className={st.wrapper}>
                     {pizza.map((item) => (
                         <PizzaItem
                             image={item.image}
@@ -40,9 +45,9 @@ const PizzaList = () => {
                             sizes={item.sizes}
                         />
                     ))}
-                </>
+                </div>
             )}
-        </div>
+        </>
     );
 };
 

@@ -1,7 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { selectCart } from "../../store/slices/cartSlice";
+import { selectCart } from "../store/slices/cartSlice";
 
 const Header = () => {
     const { totalPrice, cartItems } = useSelector(selectCart);

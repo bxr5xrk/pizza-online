@@ -19,7 +19,7 @@ const initialState = {
         { name: "за алфавітом", sortProp: "title" },
     ],
     page: 1,
-    limitItems: 3,
+    limitItems: 6,
 };
 
 const filterSlice = createSlice({
