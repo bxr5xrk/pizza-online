@@ -6,6 +6,7 @@ import {
     setCategory,
     setPage,
 } from "../../store/slices/filterSlice";
+import st from "./PizzaCategories.module.scss";
 
 const PizzaCategories = () => {
     const { selectedCategory, categories } = useSelector(selectFilter);
@@ -20,19 +21,19 @@ const PizzaCategories = () => {
     };
 
     return (
-        <>
+        <nav className={st.categories}>
             <ul>
                 {categories.map((category, i) => (
                     <li
                         onClick={() => onChangeValue(i)}
-                        className={selectedCategory === i ? "active" : ""}
+                        className={selectedCategory === i ? `${st.active}` : ""}
                         key={i}
                     >
                         {category}
                     </li>
                 ))}
             </ul>
-        </>
+        </nav>
     );
 };
 

@@ -1,14 +1,37 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { selectFilter, setSort } from "../../store/slices/filterSlice";
+import st from "./PizzaSort.module.scss";
 
 const PizzaSort = () => {
-    const { sorting } = useSelector(selectFilter);
+    const { sorting, selectedSort } = useSelector(selectFilter);
     const dispatch = useDispatch();
+    const [openPoUp, setOpenPopUp] = useState(false);
+    const sortRef = useRef();
+
+    const onClickPipUpItem = async (obj) => {
+        dispatch(setSort(obj));
+        setOpenPopUp(false);
+    };
+
+    const hidePopUp = (e) => {
+        if (!e.path.includes(sortRef.current)) {
+            setOpenPopUp(false);
+        }
+    };
+
+    useEffect(() => {
+        document.body.addEventListener("click", hidePopUp);
+
+        return () => document.body.removeEventListener("click", hidePopUp);
+    }, []);
 
     return (
-        <div className="sort">
-            <div className="sort__label">
+        <div className={st.sort} ref={sortRef}>
+            <div
+                className={st.sort__label}
+                onClick={() => setOpenPopUp(!openPoUp)}
+            >
                 <svg
                     width="10"
                     height="6"
@@ -22,27 +45,26 @@ const PizzaSort = () => {
                     />
                 </svg>
                 <b>Сортувати:</b>
-                <span>{sorting.name}</span>
+                <span>{selectedSort.name}</span>
             </div>
-            {/* {openPopUp && ( */}
-            <div className="sort__popup">
-                <ul>
+
+            {openPoUp && (
+                <ul className={st.popup}>
                     {sorting.map((obj, i) => (
                         <li
                             key={i}
-                            onClick={() => dispatch(setSort(obj))}
+                            onClick={() => onClickPipUpItem(obj)}
                             className={
-                                sorting.sortProp === obj.sortProp
-                                    ? "active"
-                                    : ""
+                                selectedSort.sortProp === obj.sortProp
+                                    ? `${st.item} ${st.active}`
+                                    : `${st.item}`
                             }
                         >
                             {obj.name}
                         </li>
                     ))}
                 </ul>
-            </div>
-            {/* )} */}
+            )}
         </div>
     );
 };
