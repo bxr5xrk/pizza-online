@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { searchPizza } from "../../api/PizzaService";
 import { selectFilter, setSearchValue } from "../../store/slices/filterSlice";
 import { useDebounce } from "../../utils/useDebounce";
-import st from "./PizzaSearch.module.scss";
+import st from "../SortingTypes/SortingTypes.module.scss";
 
 const PizzaSearch = () => {
     const [showModal, setShowModal] = useState(false);
@@ -35,7 +35,7 @@ const PizzaSearch = () => {
         <>
             {showModal && (
                 <div
-                    className={st.wrapper}
+                    className={st.container}
                     onClick={(e) =>
                         e.target !== inputRef.current && onClickWrapper()
                     }
@@ -71,7 +71,6 @@ const PizzaSearch = () => {
             <svg
                 onClick={() => setShowModal(true)}
                 className={st.icon}
-                viewBox="0 0 24 24"
                 xmlns="http://www.w3.org/2000/svg"
                 width={30}
                 height={30}
