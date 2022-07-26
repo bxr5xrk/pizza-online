@@ -5,11 +5,11 @@ import SortingTypes from "../components/SortingTypes/SortingTypes";
 
 const PizzasPage = () => {
     return (
-        <>
+        <div className="main">
             <SortingTypes />
             <PizzaList />
             <Pagination />
-        </>
+        </div>
     );
 };
 

@@ -21,7 +21,7 @@ const PizzaPage = () => {
     }
 
     return (
-        <div>
+        <main className="main">
             <img src={pizza.image} alt={pizza.title} width="250" height="250" />
             <h2>{pizza.title}</h2>
             <Link to="/pizzas/p=1">all pizza</Link>
@@ -35,7 +35,7 @@ const PizzaPage = () => {
                     image={pizza.image}
                 />
             )}
-        </div>
+        </main>
     );
 };
 

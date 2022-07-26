@@ -9,6 +9,7 @@ import { selectPizza } from "../store/slices/pizzaSlice";
 const PizzaList = () => {
     const dispatch = useDispatch();
     const { selectedSort, selectedCategory } = useSelector(selectFilter);
+    const { pizza, status } = useSelector(selectPizza);
     const { pageParams } = useParams();
 
     useEffect(() => {
@@ -18,8 +19,6 @@ const PizzaList = () => {
         document.title = "Pizza";
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [pageParams, selectedCategory, selectedSort]);
-
-    const { pizza, status } = useSelector(selectPizza);
 
     if (status === "failed") {
         return <>error</>;
