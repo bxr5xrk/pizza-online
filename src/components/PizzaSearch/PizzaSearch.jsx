@@ -2,14 +2,14 @@ import React, { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { searchPizza } from "../../api/PizzaService";
-import { setSearchValue } from "../../store/slices/filterSlice";
+import { selectFilter, setSearchValue } from "../../store/slices/filterSlice";
 import { useDebounce } from "../../utils/useDebounce";
 import st from "./PizzaSearch.module.css";
 
 const PizzaSearch = () => {
     const [showModal, setShowModal] = useState(false);
     const [pizza, setPizza] = useState([]);
-    const { searchValue } = useSelector((state) => state.filterSlice);
+    const { searchValue } = useSelector(selectFilter);
     const delayedSearchValue = useDebounce(searchValue, 500);
     const inputRef = useRef();
     const dispatch = useDispatch();

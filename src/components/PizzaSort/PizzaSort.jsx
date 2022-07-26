@@ -1,9 +1,9 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { setSort } from "../../store/slices/filterSlice";
+import { selectFilter, setSort } from "../../store/slices/filterSlice";
 
 const PizzaSort = () => {
-    const { sorting } = useSelector((state) => state.filterSlice);
+    const { sorting } = useSelector(selectFilter);
     const dispatch = useDispatch();
 
     return (

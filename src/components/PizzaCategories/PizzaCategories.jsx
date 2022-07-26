@@ -1,12 +1,14 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { setCategory, setPage } from "../../store/slices/filterSlice";
+import {
+    selectFilter,
+    setCategory,
+    setPage,
+} from "../../store/slices/filterSlice";
 
 const PizzaCategories = () => {
-    const { selectedCategory, categories } = useSelector(
-        (state) => state.filterSlice
-    );
+    const { selectedCategory, categories } = useSelector(selectFilter);
     const navigate = useNavigate();
     const dispatch = useDispatch();
 

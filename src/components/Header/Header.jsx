@@ -1,9 +1,10 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { selectCart } from "../../store/slices/cartSlice";
 
 const Header = () => {
-    const { totalPrice, cartItems } = useSelector((state) => state.cartSlice);
+    const { totalPrice, cartItems } = useSelector(selectCart);
     const itemsCount = cartItems.reduce((total, i) => total + i.count, 0);
 
     return (
@@ -13,7 +14,7 @@ const Header = () => {
                 pizza-online
             </Link>
 
-            <Link to="/pizzas/p=1&category=0">pizza</Link>
+            <Link to="/pizzas/p=1">pizza</Link>
             <Link to="/cart">
                 cart {totalPrice} грн {itemsCount}
             </Link>
