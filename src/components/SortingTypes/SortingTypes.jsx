@@ -1,6 +1,6 @@
 import React from "react";
 import PizzaCategories from "../PizzaCategories/PizzaCategories";
-import PizzaSearch from "../PizzaSearch/PizzaSearch";
+import PizzaSearch from "../PizzaSearch";
 import PizzaSort from "../PizzaSort/PizzaSort";
 import st from "./SortingTypes.module.scss";
 
