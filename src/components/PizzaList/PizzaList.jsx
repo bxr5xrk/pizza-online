@@ -6,6 +6,7 @@ import { useParams } from "react-router-dom";
 import { selectFilter } from "../../store/slices/filterSlice";
 import { selectPizza } from "../../store/slices/pizzaSlice";
 import st from "./PizzaList.module.scss";
+import PizzaSkeleton from "../PizzaSkeleton";
 
 const PizzaList = () => {
     const dispatch = useDispatch();
@@ -31,22 +32,22 @@ const PizzaList = () => {
     return (
         <>
             <h1 className={st.title}>Піца</h1>
-            {status === "loading" ? (
-                <p>loading</p>
-            ) : (
-                <div className={st.wrapper}>
-                    {pizza.map((item) => (
-                        <PizzaItem
-                            image={item.image}
-                            id={item.id}
-                            title={item.title}
-                            key={item.id}
-                            edges={item.edges}
-                            sizes={item.sizes}
-                        />
-                    ))}
-                </div>
-            )}
+            <div className={st.wrapper}>
+                {status === "loading"
+                    ? [...new Array(3)].map((_, key) => (
+                          <PizzaSkeleton key={key} />
+                      ))
+                    : pizza.map((item) => (
+                          <PizzaItem
+                              image={item.image}
+                              id={item.id}
+                              title={item.title}
+                              key={item.id}
+                              edges={item.edges}
+                              sizes={item.sizes}
+                          />
+                      ))}
+            </div>
         </>
     );
 };
