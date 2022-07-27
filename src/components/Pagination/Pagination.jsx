@@ -3,11 +3,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import { getTotalPizzaCount } from "../../api/PizzaService";
 import { selectFilter, setPage } from "../../store/slices/filterSlice";
-import st from "./Pagination.module.css";
+import { selectPizza } from "../../store/slices/pizzaSlice";
+import st from "./Pagination.module.scss";
 
 const Pagination = () => {
     const [totalPages, setTotalPages] = useState();
     const { selectedCategory, limitItems, page } = useSelector(selectFilter);
+    const { status } = useSelector(selectPizza);
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const { pageParams } = useParams();
@@ -27,23 +29,23 @@ const Pagination = () => {
     const changePage = (page, variant) => {
         if (variant === "previous") {
             page > 1 && dispatch(setPage(page - 1));
+            navigate(`../pizzas/p=${page - 1}`);
         } else if (variant === "next") {
             page < pages && dispatch(setPage(page + 1));
+            navigate(`../pizzas/p=${page + 1}`);
         } else {
             dispatch(setPage(page));
+            navigate(`../pizzas/p=${page}`);
         }
-        navigate(`../pizzas/p=${page}`);
     };
 
     return (
         <div className={st.pagination}>
-            {pages > 1 && (
+            {status !== "loading" && pages > 1 && (
                 <>
                     <span
-                        className={`${st.page} ${
-                            page === 1 ? st.inactive : ""
-                        }`}
-                        onClick={() => changePage(page, "previous")}
+                        className={page !== 1 ? st.page : st.inactive}
+                        onClick={() => page > 1 && changePage(page, "previous")}
                     >
                         {"<"}
                     </span>
@@ -63,10 +65,10 @@ const Pagination = () => {
                     ))}
 
                     <span
-                        className={`${st.page} ${
-                            page === pages && st.inactive
-                        }`}
-                        onClick={() => changePage(page, "next")}
+                        className={page !== pages ? st.page : st.inactive}
+                        onClick={() =>
+                            page === pages - 1 && changePage(page, "next")
+                        }
                     >
                         {">"}
                     </span>

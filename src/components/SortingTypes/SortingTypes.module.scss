@@ -86,7 +86,8 @@
         grid-area: sorting;
         display: flex;
         position: relative;
-    
+        justify-content: center;
+
         &__label {
             display: flex;
             align-items: center;
@@ -109,7 +110,7 @@
             position: absolute;
             cursor: pointer;
             background-color: #fff;
-            left: 0;
+            right: 0;
             top: 30px;
             box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.09);
             border-radius: 10px;
@@ -133,7 +134,7 @@
     }
     @media (max-width: 1180px) {
         grid-template-rows: auto auto;
-        grid-template-columns: auto 1fr;
+        grid-template-columns: auto auto;
         gap: 20px 0;
         grid-template-areas: 
         "categories categories"
@@ -146,6 +147,18 @@
 
         .sort {
             justify-content: flex-end;
+
+            b {
+                display: none;
+            }
+
+            svg {
+                margin: 0;
+            }
+
+            .popup {
+                max-width: 500px;
+            }
         }
 
         .categories {
