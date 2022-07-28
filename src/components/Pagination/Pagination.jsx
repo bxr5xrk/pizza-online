@@ -39,6 +39,10 @@ const Pagination = () => {
 
     const pages = Math.ceil(totalPages / limitItems);
 
+    if (pageParams < 1 || pageParams > pages) {
+        return <h1 className={st.wrongPage}>Такої сторінки не існує</h1>;
+    }
+
     return (
         <div className={st.pagination}>
             {status !== "loading" && pages > 1 && (

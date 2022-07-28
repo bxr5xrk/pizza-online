@@ -21,14 +21,6 @@ export const fetchPizza = createAsyncThunk(
     }
 );
 
-// export const searchPizza = async (delayedSearchValue, setData) => {
-//     const search = delayedSearchValue ? `?search=${delayedSearchValue}` : "";
-
-//     await axios.get(API_URL + `${search}`).then((res) => setData(res.data));
-
-//     // return ;
-// };
-
 export const getTotalPizzaCount = async (setData, selectedCategory) => {
     const category =
         Number(selectedCategory) === 0 ? "" : `?category=${selectedCategory}`;
