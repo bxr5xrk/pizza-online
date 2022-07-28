@@ -24,7 +24,10 @@ const Header = () => {
             </div>
             <div className={st.nav}>
                 <Link to="/pizzas/p=1">Піца</Link>
-                <Link to="/pizzas/p=1">Суші</Link>
+                <Link to="">
+                    Суші
+                    <p>скоро</p>
+                </Link>
             </div>
 
             <Link to="/cart" className={st.cart}>
