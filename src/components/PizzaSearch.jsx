@@ -2,25 +2,26 @@ import React, { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { searchPizza } from "../api/PizzaService";
-import { selectFilter, setSearchValue } from "../store/slices/filterSlice";
+import { setSearchValue, setSuitablePizza } from "../store/slices/searchSlice";
+import { selectSearch } from "../store/slices/searchSlice";
 import { useDebounce } from "../utils/useDebounce";
 import st from "./SortingTypes/SortingTypes.module.scss";
 
 const PizzaSearch = () => {
     const [showModal, setShowModal] = useState(false);
-    const [pizza, setPizza] = useState([]);
-    const { searchValue } = useSelector(selectFilter);
     const [value, setValue] = useState("");
     const delayedSearchValue = useDebounce(value, 500);
     const inputRef = useRef();
     const dispatch = useDispatch();
+    const { status, suitablePizza } = useSelector(selectSearch);
 
     useEffect(() => {
-        if (delayedSearchValue.length > 0 && value !== " ") {
-            searchPizza(delayedSearchValue, setPizza);
-            dispatch(setSearchValue(delayedSearchValue));
+        if (value.match(/^(\S)[\S ]*/g) !== null) {
+            dispatch(searchPizza({ delayedSearchValue }));
+        } else {
+            dispatch(setSuitablePizza([]));
         }
-        delayedSearchValue === "" && setPizza([]);
+        dispatch(setSearchValue(value));
 
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [delayedSearchValue]);
@@ -29,10 +30,6 @@ const PizzaSearch = () => {
         setValue("");
         dispatch(setSearchValue(""));
         setShowModal(false);
-    };
-
-    const onChangeSearchValue = (e) => {
-        setValue(e.target.value);
     };
 
     return (
@@ -49,25 +46,31 @@ const PizzaSearch = () => {
                         ref={inputRef}
                         type="text"
                         value={value}
-                        onChange={(e) => onChangeSearchValue(e)}
+                        onChange={(e) => setValue(e.target.value)}
                         className={st.input}
                     />
-                    <div className={st.dropdown}>
-                        {delayedSearchValue.length > 0 && pizza.length ? (
-                            pizza.map((i, count) => (
-                                <Link key={i.id} to={`/pizza/${i.id}`}>
-                                    <p>
-                                        {count + 1}. {i.title}
-                                    </p>
-                                </Link>
-                            ))
-                        ) : (
-                            <p>
-                                {delayedSearchValue !== "" &&
-                                    "Нічого не знайдено"}
-                            </p>
-                        )}
-                    </div>
+                    {value.length > 0 && (
+                        <div className={st.dropdown}>
+                            {status === "loading" ? (
+                                <p>Завантаження...</p>
+                            ) : status === "success" &&
+                              delayedSearchValue.length > 1 ? (
+                                suitablePizza.length > 0 ? (
+                                    suitablePizza.map((i, count) => (
+                                        <Link key={i.id} to={`/pizza/${i.id}`}>
+                                            <p>
+                                                {count + 1}. {i.title}
+                                            </p>
+                                        </Link>
+                                    ))
+                                ) : (
+                                    <p>Нічого не знайдено :(</p>
+                                )
+                            ) : (
+                                status === "failed" && <p>failed</p>
+                            )}
+                        </div>
+                    )}
                 </div>
             )}
             <svg
