@@ -24,8 +24,6 @@ const Pagination = () => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [pageParams]);
 
-    const pages = Math.ceil(totalPages / limitItems);
-
     const changePage = (page, variant) => {
         if (variant === "previous") {
             page > 1 && dispatch(setPage(page - 1));
@@ -38,6 +36,8 @@ const Pagination = () => {
             navigate(`../pizzas/p=${page}`);
         }
     };
+
+    const pages = Math.ceil(totalPages / limitItems);
 
     return (
         <div className={st.pagination}>

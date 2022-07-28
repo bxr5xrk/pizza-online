@@ -6,27 +6,25 @@
     align-items: center;
 
     .page {
-            margin: 0 5px;
-            border: 1px solid #fe5f1e;
-            border-radius: 30px;
-            width: 45px;
-            height: 45px;
-            line-height: 42px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            cursor: pointer;
-            color: #fe5f1e;
-    }
+        margin: 0 5px;
+        border: 1px solid #fe5f1e;
+        border-radius: 30px;
+        width: 45px;
+        height: 45px;
+        line-height: 42px;
+        text-align: center;
+        cursor: pointer;
+        color: #fe5f1e;
 
-    .page:hover {
-        color: aliceblue;
-        background-color: #fe5f1e;
-    }
+        &:hover {
+            color: aliceblue;
+            background-color: #fe5f1e;
+        }
 
-    .page__selected {
-        color: aliceblue;
-        background-color: #fe5f1e;
+        &__selected {
+            color: aliceblue;
+            background-color: #fe5f1e;
+        }
     }
 
     .inactive {
