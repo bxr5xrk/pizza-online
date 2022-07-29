@@ -21,12 +21,12 @@ const PizzaList = () => {
             fetchPizza({ pageParams, selectedCategory, sortBy, limitItems })
         );
 
-        document.title = "Pizza";
+        document.title = "Піца";
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [pageParams, selectedCategory, selectedSort]);
 
     if (status === "failed") {
-        return <>error</>;
+        return <p>error</p>;
     }
 
     return (
