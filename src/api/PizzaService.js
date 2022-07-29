@@ -57,3 +57,11 @@ export const postCartItems = async (data) => {
             console.log(error);
         });
 };
+
+export const getCartitems = async (setData) => {
+    const { data } = await axios.get(
+        "https://62d8222f9c8b5185c783bcb2.mockapi.io/orders"
+    );
+
+    return setData(data);
+};
