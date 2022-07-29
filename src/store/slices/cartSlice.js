@@ -1,9 +1,20 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const initialState = {
-    cartItems: [],
-    totalPrice: 0,
+const getItemsFromLS = () => {
+    const data = localStorage.getItem("cartItems");
+    return data ? JSON.parse(data) : [];
 };
+
+const getPriceFromLS = () => {
+    const data = localStorage.getItem("cartPrice");
+    return data ? JSON.parse(data) : 0;
+};
+
+const initialState = {
+    cartItems: getItemsFromLS(),
+    totalPrice: getPriceFromLS(),
+};
+
 const findPizza = (state, action) =>
     state.cartItems.find(
         (i) =>

@@ -155,10 +155,7 @@ const Cart = () => {
                             </p>
                         </div>
 
-                        <img
-                            src="/img/shopping.png"
-                            alt="Empty cart"
-                        />
+                        <img src="/img/shopping.png" alt="Empty cart" />
                         <Link to="/pizzas/p=1">
                             <button>Повернутися на головну</button>
                         </Link>

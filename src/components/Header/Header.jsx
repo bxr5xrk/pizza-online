@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { selectCart } from "../../store/slices/cartSlice";
@@ -7,6 +7,11 @@ import st from "./Header.module.scss";
 const Header = () => {
     const { totalPrice, cartItems } = useSelector(selectCart);
     const itemsCount = cartItems.reduce((total, i) => total + i.count, 0);
+
+    useEffect(() => {
+        localStorage.setItem("cartItems", JSON.stringify(cartItems));
+        localStorage.setItem("cartPrice", String(totalPrice));
+    }, [cartItems, totalPrice]);
 
     return (
         <header className={st.header}>
