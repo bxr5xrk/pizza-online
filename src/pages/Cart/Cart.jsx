@@ -1,6 +1,8 @@
+import { format } from "date-fns";
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { postCartItems } from "../../api/PizzaService";
 import CartItem from "../../components/CartItem/CartItem";
 import { clearCart, selectCart } from "../../store/slices/cartSlice";
 import st from "./Cart.module.scss";
@@ -9,6 +11,22 @@ const Cart = () => {
     const dispatch = useDispatch();
     const { totalPrice, cartItems } = useSelector(selectCart);
     const itemsCount = cartItems.reduce((total, i) => total + i.count, 0);
+
+    const postItems = () => {
+        const items = cartItems.map((i) => ({
+            title: i.title,
+            id: i.id,
+            size: i.size,
+            edge: i.edge,
+            count: i.count,
+        }));
+
+        postCartItems({
+            items: { ...items },
+            totalPrice,
+            time: format(new Date(), "kk:mm"),
+        });
+    };
 
     return (
         <div className="main">
@@ -139,7 +157,12 @@ const Cart = () => {
                                     </svg>
                                     <p>Повернутися назад</p>
                                 </Link>
-                                <button className={st.button}>Оплатити</button>
+                                <button
+                                    className={st.button}
+                                    onClick={postItems}
+                                >
+                                    Оплатити
+                                </button>
                             </div>
                         </div>
                     </>

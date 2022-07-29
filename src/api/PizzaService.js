@@ -44,3 +44,16 @@ export const searchPizza = createAsyncThunk(
         return data;
     }
 );
+
+export const postCartItems = async (data) => {
+    await axios
+        .post("https://62d8222f9c8b5185c783bcb2.mockapi.io/orders", {
+            ...data,
+        })
+        // .then(function (response) {
+        //     console.log(response);
+        // })
+        .catch(function (error) {
+            console.log(error);
+        });
+};
