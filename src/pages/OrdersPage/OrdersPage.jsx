@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { getCartitems } from "../../api/PizzaService";
+import OrderItem from "../../components/OrderItem";
+import st from "./OrdersPage.module.scss";
 
 const OrdersPage = () => {
     const [orders, setOrders] = useState([]);
@@ -9,26 +11,26 @@ const OrdersPage = () => {
     }, []);
 
     return (
-        <div>
-            <h1>замовлення: </h1>
-            {orders.length > 0 &&
-                orders.map((order, count) => (
-                    <>
-                        <h2 key={order.id}>
-                            {count + 1}. total price: {order.totalPrice}
-                        </h2>
-                        <h2 key={order.id}>
-                            Iм'я: {order.firstName}, {order.phone}
-                        </h2>
+        <div className="main">
+            <div className={st.orders}>
+                <h1>Замовлення: </h1>
 
-                        {order.items.map((item) => (
-                            <h3 key={item.id}>
-                                {item.title}, count: {item.count}, size:{" "}
-                                {item.size}, edge: {item.edge}{" "}
-                            </h3>
+                <section className={st.orders__list}>
+                    {orders.length > 0 &&
+                        orders.map((order, count) => (
+                            <OrderItem
+                                key={order.id}
+                                count={count + 1}
+                                price={order.totalPrice}
+                                name={order.firstName}
+                                phone={order.phone}
+                                orderItems={order.items}
+                            />
                         ))}
-                    </>
-                ))}
+                </section>
+
+                <h2>Кількість замовлень: {orders.length}</h2>
+            </div>
         </div>
     );
 };
