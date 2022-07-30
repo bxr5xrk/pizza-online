@@ -3,33 +3,38 @@ import * as Yup from "yup";
 import React from "react";
 import st from "./CartModal.module.scss";
 
-const CartModal = ({ setFormData }) => {
+const CartModal = ({ setFormData, setShowModal }) => {
     const formik = useFormik({
         initialValues: {
             firstName: "",
-            phone: "",
+            phone: "+380",
         },
         validationSchema: Yup.object({
             firstName: Yup.string()
-                .max(15, "Must be 15 characters or less")
-                .min(3, "Must be 3 characters or more")
-                .required("Required"),
+                .max(15, "Ім'я не повинне перевищувати 15 символів")
+                .min(3, "Ім'я повинне складатися більш ніж з 3 символів")
+                .required("Ім'я обов'язкове"),
             phone: Yup.string()
-                .matches(/^\d{9}$/, "must contains 9 numbers")
-                .required("Required"),
+                .matches(
+                    /^\+(\d{12})$/,
+                    "Номер телефону не відповідає дійсності"
+                )
+                .required("Номер телефону обов'язковий"),
         }),
         onSubmit: (values) =>
-            setFormData({ ...values, phone: `0${values.phone}` }),
+            setFormData({ ...values, phone: `+380${values.phone}` }),
     });
 
     return (
-        <div className={st.wrapper}>
-            modal window
-            <form onSubmit={formik.handleSubmit}>
+        <div className={st.wrapper} onClick={() => setShowModal(false)}>
+            <form
+                onSubmit={formik.handleSubmit}
+                onClick={(e) => e.stopPropagation()}
+            >
                 <input
                     id="firstName"
                     type="text"
-                    placeholder="enter first name"
+                    placeholder="Введіть ім'я"
                     value={formik.values.firstName}
                     onChange={formik.handleChange}
                     onBlur={formik.handleBlur}
@@ -39,16 +44,18 @@ const CartModal = ({ setFormData }) => {
                 )}
                 <input
                     id="phone"
-                    type="number"
-                    placeholder="enter phone number"
+                    type="string"
+                    placeholder="Введіть номер телефону"
                     value={formik.values.phone}
                     onChange={formik.handleChange}
                     onBlur={formik.handleBlur}
                 />
+
                 {formik.touched.phone && formik.errors.phone && (
                     <p>{formik.errors.phone}</p>
                 )}
-                <button type="submit">Submit</button>
+
+                <button type="submit">Підтвердити замовлення</button>
             </form>
         </div>
     );

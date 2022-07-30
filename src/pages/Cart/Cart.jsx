@@ -13,25 +13,25 @@ const Cart = () => {
     const { totalPrice, cartItems } = useSelector(selectCart);
     const itemsCount = cartItems.reduce((total, i) => total + i.count, 0);
     const [formData, setFormData] = useState({});
+    const [showModal, setShowModal] = useState(false);
 
     const postItems = () => {
-        const items = cartItems.map((i) => ({
-            title: i.title,
-            id: i.id,
-            size: i.size,
-            edge: i.edge,
-            count: i.count,
-        }));
+        // const items = cartItems.map((i) => ({
+        //     title: i.title,
+        //     id: i.id,
+        //     size: i.size,
+        //     edge: i.edge,
+        //     count: i.count,
+        // }));
 
-        postCartItems({
-            items,
-            totalPrice,
-            time: format(new Date(), "kk:mm"),
-        });
-        dispatch(clearCart());
+        // postCartItems({
+        //     items,
+        //     totalPrice,
+        //     time: format(new Date(), "kk:mm"),
+        // });
+        // dispatch(clearCart());
+        setShowModal(true);
     };
-
-    console.log(formData);
 
     return (
         <>
@@ -195,7 +195,7 @@ const Cart = () => {
                     )}
                 </section>
             </div>
-            <CartModal setFormData={setFormData} />
+            {showModal && <CartModal setFormData={setFormData} setShowModal={setShowModal} />}
         </>
     );
 };
