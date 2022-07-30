@@ -63,10 +63,27 @@
             svg {
                 transform: rotate(45deg);
                 margin-right: 20px;
+                cursor: pointer;
+
+                &:hover {
+                    fill: var(--orange);
+                }
             }
 
             &:hover {
                 top: -5px;
+            }
+
+            .message {
+                position: absolute;
+                right: 15px;
+                top: -25px;
+                border: 1px solid var(--orange);
+                padding: 10px;
+                background-color: var(--orange);
+                color: var(--white);
+                font-weight: 700;
+                border-radius: 30px;
             }
         }
     }
