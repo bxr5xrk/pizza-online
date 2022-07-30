@@ -1,5 +1,5 @@
 import { format } from "date-fns";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { postCartItems } from "../../api/PizzaService";
@@ -12,25 +12,23 @@ const Cart = () => {
     const dispatch = useDispatch();
     const { totalPrice, cartItems } = useSelector(selectCart);
     const itemsCount = cartItems.reduce((total, i) => total + i.count, 0);
-    const [formData, setFormData] = useState({});
     const [showModal, setShowModal] = useState(false);
 
-    const postItems = () => {
-        // const items = cartItems.map((i) => ({
-        //     title: i.title,
-        //     id: i.id,
-        //     size: i.size,
-        //     edge: i.edge,
-        //     count: i.count,
-        // }));
-
-        // postCartItems({
-        //     items,
-        //     totalPrice,
-        //     time: format(new Date(), "kk:mm"),
-        // });
-        // dispatch(clearCart());
-        setShowModal(true);
+    const postItems = (formData) => {
+        const items = cartItems.map((i) => ({
+            title: i.title,
+            id: i.id,
+            size: i.size,
+            edge: i.edge,
+            count: i.count,
+        }));
+        postCartItems({
+            items,
+            totalPrice,
+            time: format(new Date(), "kk:mm"),
+            ...formData,
+        });
+        dispatch(clearCart());
     };
 
     return (
@@ -168,7 +166,7 @@ const Cart = () => {
                                     </Link>
                                     <button
                                         className={st.button}
-                                        onClick={postItems}
+                                        onClick={() => setShowModal(true)}
                                     >
                                         Оплатити
                                     </button>
@@ -195,7 +193,9 @@ const Cart = () => {
                     )}
                 </section>
             </div>
-            {showModal && <CartModal setFormData={setFormData} setShowModal={setShowModal} />}
+            {showModal && (
+                <CartModal postItems={postItems} setShowModal={setShowModal} />
+            )}
         </>
     );
 };

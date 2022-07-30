@@ -17,6 +17,9 @@ const OrdersPage = () => {
                         <h2 key={order.id}>
                             {count + 1}. total price: {order.totalPrice}
                         </h2>
+                        <h2 key={order.id}>
+                            Iм'я: {order.firstName}, {order.phone}
+                        </h2>
 
                         {order.items.map((item) => (
                             <h3 key={item.id}>

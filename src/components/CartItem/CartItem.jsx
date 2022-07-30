@@ -17,7 +17,7 @@ const CartItem = ({ id, title, count, image, size, edge, price }) => {
                 <div className={st.pizza__info}>
                     <h3>{title}</h3>
                     <div>
-                        <p>{edge}</p>
+                        <p>{edge},</p>
                         <p>{size} см</p>
                     </div>
                 </div>
