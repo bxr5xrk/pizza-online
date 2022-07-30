@@ -6,7 +6,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    
+    text-align: center;
+
     p {
         color: red;
         font-size: 20px;
@@ -65,6 +66,18 @@
 
             button {
                 font-size: 15px;
+            }
+        }
+
+        .success {
+            h3 {
+                font-size: 20px;
+                color: var(--orange);
+                margin-bottom: 30px;
+            }
+
+            svg {
+                transform: rotate(45deg);
             }
         }
     }
