@@ -2,9 +2,11 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import React, { useState } from "react";
 import st from "./CartModal.module.scss";
+import { useNavigate } from "react-router-dom";
 
 const CartModal = ({ postItems, setShowModal }) => {
     const [showSuccessMessage, setShowSuccessMessage] = useState(false);
+    const navigate = useNavigate();
 
     const formik = useFormik({
         initialValues: {
@@ -13,8 +15,10 @@ const CartModal = ({ postItems, setShowModal }) => {
         },
         validationSchema: Yup.object({
             firstName: Yup.string()
-                .max(15, "Ім'я не повинне перевищувати 15 символів")
-                .min(3, "Ім'я повинне складатися більш ніж з 3 символів")
+                .matches(
+                    /^(\D){3,15}$/,
+                    "Ім'я повинне повинне містити від 3 до 15 літер"
+                )
                 .required("Ім'я обов'язкове"),
             phone: Yup.string()
                 .matches(
@@ -29,6 +33,11 @@ const CartModal = ({ postItems, setShowModal }) => {
         },
     });
 
+    const onClickClose = () => {
+        setShowModal(false);
+        navigate("/pizzas/p=1");
+    };
+
     return (
         <div className={st.wrapper} onClick={() => setShowModal(false)}>
             <>
@@ -40,7 +49,7 @@ const CartModal = ({ postItems, setShowModal }) => {
                         <div className={st.success}>
                             <h3>Ваше замовлення успішно оформлене </h3>
                             <svg
-                                onClick={() => setShowModal(false)}
+                                onClick={onClickClose}
                                 width="30"
                                 height="30"
                                 viewBox="0 0 10 10"
