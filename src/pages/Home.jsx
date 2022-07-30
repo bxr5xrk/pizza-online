@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Home = () => {
     document.title = "Pizza online";
@@ -14,6 +15,9 @@ const Home = () => {
             >
                 PIZZA ONLINE
             </h1>
+            <Link to="/orders">
+                <button>Замовлення</button>
+            </Link>
         </main>
     );
 };
