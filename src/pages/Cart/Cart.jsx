@@ -1,5 +1,5 @@
 import { format } from "date-fns";
-import React from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { postCartItems } from "../../api/PizzaService";
@@ -12,6 +12,7 @@ const Cart = () => {
     const dispatch = useDispatch();
     const { totalPrice, cartItems } = useSelector(selectCart);
     const itemsCount = cartItems.reduce((total, i) => total + i.count, 0);
+    const [formData, setFormData] = useState({});
 
     const postItems = () => {
         const items = cartItems.map((i) => ({
@@ -29,6 +30,8 @@ const Cart = () => {
         });
         dispatch(clearCart());
     };
+
+    console.log(formData);
 
     return (
         <>
@@ -192,7 +195,7 @@ const Cart = () => {
                     )}
                 </section>
             </div>
-            <CartModal />
+            <CartModal setFormData={setFormData} />
         </>
     );
 };
