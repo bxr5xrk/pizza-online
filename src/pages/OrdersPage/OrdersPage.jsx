@@ -8,28 +8,22 @@ const OrdersPage = () => {
         getCartitems(setOrders);
     }, []);
 
-    // console.log(orders)
-    const items = orders.map((i) => i.items);
-    // console.log(items.map((i, j) =>i))
-    // console.log(items.map((i, item) => i[item].title))
-    // const a = orders.map((i, j) => i)
-
-    // const b = a.map((i, j) => i )
-
-    // console.log(items.map((i, j) => i[j].title));
-
     return (
         <div>
-            <h1>замовлення</h1>
+            <h1>замовлення: </h1>
             {orders.length > 0 &&
-                orders.map((i, j) => (
+                orders.map((order, count) => (
                     <>
-                        <h1 key={i.id}>
-                            {i.id}. {i.totalPrice}
-                        </h1>
-                        {/* {i[j].map((i) => (
-                            <>{i.title}</>
-                        ))} */}
+                        <h2 key={order.id}>
+                            {count + 1}. total price: {order.totalPrice}
+                        </h2>
+
+                        {order.items.map((item) => (
+                            <h3 key={item.id}>
+                                {item.title}, count: {item.count}, size:{" "}
+                                {item.size}, edge: {item.edge}{" "}
+                            </h3>
+                        ))}
                     </>
                 ))}
         </div>

@@ -22,10 +22,11 @@ const Cart = () => {
         }));
 
         postCartItems({
-            items: { ...items },
+            items,
             totalPrice,
             time: format(new Date(), "kk:mm"),
         });
+        dispatch(clearCart());
     };
 
     return (
