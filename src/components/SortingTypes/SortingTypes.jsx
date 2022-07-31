@@ -1,7 +1,7 @@
 import React from "react";
-import PizzaCategories from "../PizzaCategories/PizzaCategories";
+import PizzaCategories from "../PizzaCategories";
 import PizzaSearch from "../PizzaSearch";
-import PizzaSort from "../PizzaSort/PizzaSort";
+import PizzaSort from "../PizzaSort";
 import st from "./SortingTypes.module.scss";
 
 const SortingTypes = () => {

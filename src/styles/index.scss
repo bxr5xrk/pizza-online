@@ -119,25 +119,3 @@ body {
 .main {
     grid-area: main;
 }
-
-.home {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 30px;
-
-    h1 {
-        font-size: 40px;
-    }
-
-    button {
-        margin-top: 20px;
-        border: 1px solid var(--orange);
-        color: var(--white);
-        padding: 10px 15px;
-        background-color: var(--orange);
-        border-radius: 30px;
-        font-weight: 700;
-        cursor: pointer;
-    }
-}

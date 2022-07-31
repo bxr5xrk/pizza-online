@@ -4,15 +4,16 @@ import { Navigate, Route, Routes } from "react-router-dom";
 import Footer from "./components/Footer";
 import Header from "./components/Header/Header";
 import Cart from "./pages/Cart/Cart";
-import Home from "./pages/Home";
+import Home from "./pages/HomePage/HomePage";
 import LoginPage from "./pages/LoginPage/LoginPage";
 import OrdersPage from "./pages/OrdersPage/OrdersPage";
 import Page404 from "./pages/Page404/Page404";
 import PizzaPage from "./pages/PizzaPage/PizzaPage";
 import PizzasPage from "./pages/PizzasPage";
+import { selectAuth } from "./store/slices/authSlice";
 
 function App() {
-    const { isAuth } = useSelector((state) => state.authSlice);
+    const { isAuth } = useSelector(selectAuth);
 
     useEffect(() => {
         localStorage.setItem("isAuth", isAuth);

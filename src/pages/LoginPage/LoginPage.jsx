@@ -61,7 +61,7 @@ const LoginPage = () => {
                     <p>{formik.errors.password}</p>
                 )}
                 {wrongData && <p>Неправильні дані</p>}
-                <button type="submit">Увійти</button>
+                <button type="submit" className={st.button}>Увійти</button>
             </form>
         </div>
     );

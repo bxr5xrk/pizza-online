@@ -5,8 +5,8 @@ import {
     selectFilter,
     setCategory,
     setPage,
-} from "../../store/slices/filterSlice";
-import st from "../SortingTypes/SortingTypes.module.scss";
+} from "../store/slices/filterSlice";
+import st from "./SortingTypes/SortingTypes.module.scss";
 
 const PizzaCategories = () => {
     const { selectedCategory, categories } = useSelector(selectFilter);

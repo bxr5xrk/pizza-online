@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import PizzaSizeAndType from "../PizzaParams/PizzaParams";
-import st from "../PizzaList/PizzaList.module.scss";
+import PizzaSizeAndType from "./PizzaParams/PizzaParams";
+import st from "./PizzaList/PizzaList.module.scss";
 
 const PizzaItem = ({ id, title, image, edges, sizes }) => {
     return (

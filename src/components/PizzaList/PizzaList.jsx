@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchPizza } from "../../api/PizzaService";
-import PizzaItem from "../PizzaItem/PizzaItem";
+import PizzaItem from "../PizzaItem";
 import { useParams } from "react-router-dom";
 import { selectFilter } from "../../store/slices/filterSlice";
 import { selectPizza } from "../../store/slices/pizzaSlice";
