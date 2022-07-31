@@ -42,6 +42,18 @@ a, a::after {
     color: var(--black);
 }
 
+::-webkit-scrollbar {
+  width: 10px;
+
+  &-track {
+    background-color: white;
+  }
+  &-thumb {
+    background-color: var(--gray);
+    border-radius: 50px;
+  }
+}
+
 :root {
     --white: white;
     --black: #232323;
