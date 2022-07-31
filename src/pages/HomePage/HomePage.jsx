@@ -13,7 +13,7 @@ const Home = () => {
                 <div className={st.cards}>
                     <div className={st.card}>
                         <img
-                            src="../img/pizza_2.png"
+                            src="../img/pizza_home.png"
                             alt="pizza"
                             width={170}
                             height={170}
@@ -28,7 +28,7 @@ const Home = () => {
                     </div>
                     <div className={st.card}>
                         <img
-                            src="../img/sushi_2.png"
+                            src="../img/sushi_home.png"
                             alt="sushi"
                             width={170}
                             height={160}
