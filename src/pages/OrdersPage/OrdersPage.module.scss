@@ -9,6 +9,26 @@
         font-size: 35px;
     }
 
+    &__title {
+        display: flex;
+        position: relative;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 20px;
+
+        button {
+            position: absolute;
+            right: 0;
+            border: 1px solid var(--orange);
+            color: var(--white);
+            padding: 10px 15px;
+            background-color: var(--orange);
+            border-radius: 30px;
+            font-weight: 700;
+            cursor: pointer;
+        }
+    }
+
     &__list {
         display: flex;
         flex-direction: column;
