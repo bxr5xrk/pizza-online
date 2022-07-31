@@ -1,13 +1,11 @@
 import { useFormik } from "formik";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import * as Yup from "yup";
-import { getAuthValues } from "../../api/PizzaService";
 import { setAuth } from "../../store/slices/authSlice";
 import st from "./LoginPage.module.scss";
 
 const LoginPage = () => {
-    // const [authValues, setAuthValues] = useState();
     const [wrongData, setWrongData] = useState(false);
     const dispatch = useDispatch();
 
@@ -21,20 +19,12 @@ const LoginPage = () => {
             password: Yup.string().required("Пароль обов'язковий"),
         }),
         onSubmit: (values) => {
-            // values.login === authValues.login &&
-            // values.password === authValues.password
-            //     ? dispatch(setAuth(true))
-            //     : setWrongData(true);
             values.login === process.env.REACT_APP_LOGIN &&
             values.password === process.env.REACT_APP_PASSWORD
                 ? dispatch(setAuth(true))
                 : setWrongData(true);
         },
     });
-
-    // useEffect(() => {
-    //     getAuthValues(setAuthValues);
-    // }, []);
 
     return (
         <div className="main">

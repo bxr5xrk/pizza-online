@@ -3,7 +3,6 @@ import axios from "axios";
 
 const API_PIZZA = "https://62d8222f9c8b5185c783bcb2.mockapi.io/pizza";
 const API_ORDERS = "https://62d8222f9c8b5185c783bcb2.mockapi.io/orders";
-const API_AUTH = "https://62d8222f9c8b5185c783bcb2.mockapi.io/auth";
 
 export const fetchPizza = createAsyncThunk(
     "pizza/fetchPizzaStatus",
@@ -64,9 +63,4 @@ export const getOrderItems = async (setData) => {
 
 export const removeOrderItem = async (id) => {
     await axios.delete(API_ORDERS + `/${id}`);
-};
-
-export const getAuthValues = async (setData) => {
-    const { data } = await axios.get(API_AUTH);
-    return setData(...data);
 };
