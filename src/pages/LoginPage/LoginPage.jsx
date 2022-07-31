@@ -7,7 +7,7 @@ import { setAuth } from "../../store/slices/authSlice";
 import st from "./LoginPage.module.scss";
 
 const LoginPage = () => {
-    const [authValues, setAuthValues] = useState();
+    // const [authValues, setAuthValues] = useState();
     const [wrongData, setWrongData] = useState(false);
     const dispatch = useDispatch();
 
@@ -21,16 +21,20 @@ const LoginPage = () => {
             password: Yup.string().required("Пароль обов'язковий"),
         }),
         onSubmit: (values) => {
-            values.login === authValues.login &&
-            values.password === authValues.password
+            // values.login === authValues.login &&
+            // values.password === authValues.password
+            //     ? dispatch(setAuth(true))
+            //     : setWrongData(true);
+            values.login === process.env.REACT_APP_LOGIN &&
+            values.password === process.env.REACT_APP_PASSWORD
                 ? dispatch(setAuth(true))
                 : setWrongData(true);
         },
     });
 
-    useEffect(() => {
-        getAuthValues(setAuthValues);
-    }, []);
+    // useEffect(() => {
+    //     getAuthValues(setAuthValues);
+    // }, []);
 
     return (
         <div className="main">
@@ -61,7 +65,9 @@ const LoginPage = () => {
                     <p>{formik.errors.password}</p>
                 )}
                 {wrongData && <p>Неправильні дані</p>}
-                <button type="submit" className={st.button}>Увійти</button>
+                <button type="submit" className={st.button}>
+                    Увійти
+                </button>
             </form>
         </div>
     );

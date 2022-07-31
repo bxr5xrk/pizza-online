@@ -1,10 +1,21 @@
 # Online Pizza
 
-React
-Redux-toolkit
-mockApi
-axios
-react-router
-
-react-content-loader
-regex
+- Frontend
+    - React v18 (JS)
+    - React router v6
+    - React-content-loader
+    - Formik + yup
+    - date-fns
+- Backend
+    - Axios
+    - MockApi
+    - createAsyncThunk
+- Styles
+    - SCSS, SCSS modules
+        - flex
+        - grid
+- Store
+    - Redux-toolkit
+- other technologies
+    - Git
+    - Regex

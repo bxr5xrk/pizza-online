@@ -1,8 +1,9 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
-const API_PIZZA = process.env.REACT_APP_API_PIZZA;
+const API_PIZZA = "https://62d8222f9c8b5185c783bcb2.mockapi.io/pizza";
 const API_ORDERS = "https://62d8222f9c8b5185c783bcb2.mockapi.io/orders";
+const API_AUTH = "https://62d8222f9c8b5185c783bcb2.mockapi.io/auth";
 
 export const fetchPizza = createAsyncThunk(
     "pizza/fetchPizzaStatus",
@@ -66,8 +67,6 @@ export const removeOrderItem = async (id) => {
 };
 
 export const getAuthValues = async (setData) => {
-    const { data } = await axios.get(
-        "https://62d8222f9c8b5185c783bcb2.mockapi.io/auth"
-    );
+    const { data } = await axios.get(API_AUTH);
     return setData(...data);
 };
