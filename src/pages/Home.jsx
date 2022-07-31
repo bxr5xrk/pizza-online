@@ -6,18 +6,12 @@ const Home = () => {
 
     return (
         <main className="main">
-            <h1
-                style={{
-                    textAlign: "center",
-                    fontSize: "40px",
-                    marginTop: "50px",
-                }}
-            >
-                PIZZA ONLINE
-            </h1>
-            <Link to="/orders">
-                <button>Замовлення</button>
-            </Link>
+            <section className="home">
+                <h1>PIZZA ONLINE</h1>
+                <Link to="/login">
+                    <button>Увійти в особистий кабінет</button>
+                </Link>
+            </section>
         </main>
     );
 };
