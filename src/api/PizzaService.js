@@ -65,3 +65,10 @@ export const getOrderItems = async (setData) => {
 export const removeOrderItem = async (id) => {
     await axios.delete(API_ORDERS + `/${id}`);
 };
+
+export const getAuthValues = async (setData) => {
+    const { data } = await axios.get(
+        "https://62d8222f9c8b5185c783bcb2.mockapi.io/auth"
+    );
+    return setData(...data);
+};
