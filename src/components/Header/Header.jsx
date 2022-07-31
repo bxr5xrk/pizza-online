@@ -1,12 +1,13 @@
 import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { selectCart } from "../../store/slices/cartSlice";
 import st from "./Header.module.scss";
 
 const Header = () => {
     const { totalPrice, cartItems } = useSelector(selectCart);
     const itemsCount = cartItems.reduce((total, i) => total + i.count, 0);
+    const { pathname } = useLocation();
 
     useEffect(() => {
         localStorage.setItem("cartItems", JSON.stringify(cartItems));
@@ -28,8 +29,17 @@ const Header = () => {
                 </Link>
             </div>
             <div className={st.nav}>
-                <Link to="/pizzas/p=1">Піца</Link>
-                <Link to="">
+                {pathname === "/pizzas/p=1"}
+                <Link
+                    to="/pizzas/p=1"
+                    className={pathname === "/pizzas/p=1" ? st.active : ""}
+                >
+                    Піца
+                </Link>
+                <Link
+                    to="/"
+                    className={pathname === "/sushi/p=1" ? st.active : ""}
+                >
                     Суші
                     <p>скоро</p>
                 </Link>
