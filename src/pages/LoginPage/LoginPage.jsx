@@ -45,7 +45,7 @@ const LoginPage = () => {
                 )}
                 <input
                     id="password"
-                    type="string"
+                    type="password"
                     placeholder="Пароль"
                     value={formik.values.password}
                     onChange={formik.handleChange}
