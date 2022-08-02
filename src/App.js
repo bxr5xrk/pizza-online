@@ -3,14 +3,15 @@ import { useSelector } from "react-redux";
 import { Navigate, Route, Routes } from "react-router-dom";
 import Footer from "./components/Footer";
 import Header from "./components/Header/Header";
-import Cart from "./pages/Cart/Cart";
-import Home from "./pages/HomePage/HomePage";
-import LoginPage from "./pages/LoginPage/LoginPage";
-import OrdersPage from "./pages/OrdersPage/OrdersPage";
-import Page404 from "./pages/Page404/Page404";
-import PizzaPage from "./pages/PizzaPage/PizzaPage";
-import PizzasPage from "./pages/PizzasPage";
-import StatisticsPage from "./pages/StatisticsPage";
+import Home from "./pages/PublicPages/HomePage/HomePage";
+import HomePage from "./pages/PrivatePages/HomePage/HomePage";
+import OrdersPage from "./pages/PrivatePages/OrdersPage/OrdersPage";
+import StatisticsPage from "./pages/PrivatePages/StatisticsPage/StatisticsPage";
+import Cart from "./pages/PublicPages/Cart/Cart";
+import LoginPage from "./pages/PublicPages/LoginPage/LoginPage";
+import Page404 from "./pages/PublicPages/Page404/Page404";
+import PizzaPage from "./pages/PublicPages/PizzaPage/PizzaPage";
+import PizzasPage from "./pages/PublicPages/PizzasPage";
 import { selectAuth } from "./store/slices/authSlice";
 
 function App() {
@@ -25,15 +26,13 @@ function App() {
             {isAuth ? (
                 <>
                     <Routes>
+                        <Route path="/" element={<HomePage />} />
                         <Route path="/orders" element={<OrdersPage />} />
                         <Route
                             path="/statistics"
                             element={<StatisticsPage />}
                         />
-                        <Route
-                            path="*"
-                            element={<Navigate to="/orders" replace />}
-                        />
+                        <Route path="*" element={<Navigate to="/" replace />} />
                     </Routes>
                 </>
             ) : (

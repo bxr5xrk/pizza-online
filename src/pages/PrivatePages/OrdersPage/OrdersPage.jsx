@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import { getOrderItems } from "../../api/PizzaService";
-import OrderItem from "../../components/OrderItem";
-import { setAuth } from "../../store/slices/authSlice";
+import { getOrderItems } from "../../../api/PizzaService";
+import OrderItem from "../../../components/OrderItem";
+import { setAuth } from "../../../store/slices/authSlice";
 import st from "./OrdersPage.module.scss";
 
 const OrdersPage = () => {

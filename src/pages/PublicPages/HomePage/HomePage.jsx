@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import st from "./HomePage.module.scss";
 
-const Home = () => {
+const HomePage = () => {
     document.title = "Pizza online";
 
     return (
@@ -54,4 +54,4 @@ const Home = () => {
     );
 };
 
-export default Home;
+export default HomePage;

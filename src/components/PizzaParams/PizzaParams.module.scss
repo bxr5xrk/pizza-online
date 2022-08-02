@@ -22,7 +22,12 @@
             padding: 8px;
             cursor: pointer;
             font-weight: 600;
-            
+            transition: all 0.3s;
+
+            &:hover {
+                background-color: rgb(223, 223, 223);
+                border-radius: 5px;
+            }
 
             &.active {
                 background: #ffffff;

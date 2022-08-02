@@ -24,11 +24,12 @@
         font-weight: 500;
         cursor: pointer;
         color: var(--gray);
-        transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
+        transition: all 0.5s;
         border: 1px solid var(--gray);
 
-        svg {
-            color: var(--gray);
+        &:hover {
+            background-color: var(--gray);
+            color: var(--white);
         }
     }
 

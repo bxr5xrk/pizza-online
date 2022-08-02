@@ -1,8 +1,9 @@
 import { useFormik } from "formik";
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
 import * as Yup from "yup";
-import { setAuth } from "../../store/slices/authSlice";
+import { setAuth } from "../../../store/slices/authSlice";
 import st from "./LoginPage.module.scss";
 
 const LoginPage = () => {
@@ -19,8 +20,7 @@ const LoginPage = () => {
             password: Yup.string().required("Пароль обов'язковий"),
         }),
         onSubmit: (values) => {
-            values.login === 'admin' &&
-            values.password === 'toor'
+            values.login === "admin" && values.password === "toor"
                 ? dispatch(setAuth(true))
                 : setWrongData(true);
         },
@@ -58,6 +58,9 @@ const LoginPage = () => {
                 <button type="submit" className={st.button}>
                     Увійти
                 </button>
+                <Link className={st.back} to="/">
+                    {`< На головну`}
+                </Link>
             </form>
         </div>
     );

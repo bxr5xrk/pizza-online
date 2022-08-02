@@ -1,21 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { getOrderHistory } from "../api/PizzaService";
-
-export const concatAll = (arr, ...arrays) => arr.concat(...arrays);
-const findedItem = (arr, item) => arr.find((i) => i.item === item);
-
-export const calculateCountItems = (arr) => {
-    let newArr = [];
-    newArr.push({ item: arr[0], count: 1 });
-
-    arr.slice(1).forEach((i) => {
-        const item = findedItem(newArr, i);
-
-        item ? item.count++ : newArr.push({ item: i, count: 1 });
-    });
-
-    return newArr;
-};
+import { useNavigate } from "react-router-dom";
+import { getOrderHistory } from "../../../api/PizzaService";
+import { calculateCountItems } from "../../../utils/workingWithArrays";
 
 const StatisticsPage = () => {
     const [data, setData] = useState([]);
@@ -23,6 +9,7 @@ const StatisticsPage = () => {
     const [languages, setLanguages] = useState([]);
     const [pizzas, setPizzas] = useState([]);
     const [prices, setPrices] = useState([]);
+    const navigate = useNavigate();
 
     useEffect(() => {
         getOrderHistory(setData);
@@ -68,6 +55,7 @@ const StatisticsPage = () => {
                             {i.item}, {i.count}
                         </p>
                     ))}
+                    <button onClick={() => navigate(-1)}>button</button>
                 </>
             ) : (
                 <p>Заванатження</p>
