@@ -10,6 +10,7 @@ import OrdersPage from "./pages/OrdersPage/OrdersPage";
 import Page404 from "./pages/Page404/Page404";
 import PizzaPage from "./pages/PizzaPage/PizzaPage";
 import PizzasPage from "./pages/PizzasPage";
+import StatisticsPage from "./pages/StatisticsPage";
 import { selectAuth } from "./store/slices/authSlice";
 
 function App() {
@@ -25,6 +26,10 @@ function App() {
                 <>
                     <Routes>
                         <Route path="/orders" element={<OrdersPage />} />
+                        <Route
+                            path="/statistics"
+                            element={<StatisticsPage />}
+                        />
                         <Route
                             path="*"
                             element={<Navigate to="/orders" replace />}
