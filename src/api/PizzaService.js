@@ -2,8 +2,10 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
 const API_PIZZA = "https://62d8222f9c8b5185c783bcb2.mockapi.io/pizza";
-const API_ORDERS = process.env.REACT_APP_API_ORDERS
+const API_ORDERS = "https://62d8222f9c8b5185c783bcb2.mockapi.io/orders";
+const API_ALL_ORDERS = "https://62d8222f9c8b5185c783bcb2.mockapi.io/all_orders";
 
+// ==================== pizza ====================
 export const fetchPizza = createAsyncThunk(
     "pizza/fetchPizzaStatus",
 
@@ -45,12 +47,20 @@ export const searchPizza = createAsyncThunk(
     }
 );
 
+// ==================== orders ====================
 export const postCartItems = async (data) => {
     await axios
         .post(API_ORDERS, {
             ...data,
         })
-        .catch(function (error) {
+        .catch((error) => {
+            console.log(error);
+        });
+    await axios
+        .post(API_ALL_ORDERS, {
+            ...data,
+        })
+        .catch((error) => {
             console.log(error);
         });
 };
@@ -63,4 +73,11 @@ export const getOrderItems = async (setData) => {
 
 export const removeOrderItem = async (id) => {
     await axios.delete(API_ORDERS + `/${id}`);
+};
+
+// ==================== order history ====================
+export const getOrderHistory = async (setData) => {
+    const { data } = await axios.get(API_ALL_ORDERS);
+
+    return setData(data);
 };
