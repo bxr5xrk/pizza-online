@@ -40,6 +40,16 @@
             width: 220px;
             align-items: center;
             cursor: pointer;
+            animation: scale 1s;
+
+            @keyframes scale {
+                0% {
+                    transform: scale(0);
+                }
+                100% {
+                    transform: scale(1);
+                }
+            }
 
             img {
                 position: absolute;

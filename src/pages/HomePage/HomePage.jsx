@@ -26,7 +26,11 @@ const Home = () => {
                             <span>Перейти</span>
                         </Link>
                     </div>
-                    <div className={st.card}>
+                    <div
+                        className={st.card}
+                        animate={{ scale: [0, 1] }}
+                        transition={{ duration: 1 }}
+                    >
                         <img
                             src="../img/sushi_home.png"
                             alt="sushi"

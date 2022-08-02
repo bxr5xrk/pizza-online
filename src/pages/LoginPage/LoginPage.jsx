@@ -19,8 +19,8 @@ const LoginPage = () => {
             password: Yup.string().required("Пароль обов'язковий"),
         }),
         onSubmit: (values) => {
-            values.login === process.env.REACT_APP_LOGIN &&
-            values.password === process.env.REACT_APP_PASSWORD
+            values.login === 'admin' &&
+            values.password === 'toor'
                 ? dispatch(setAuth(true))
                 : setWrongData(true);
         },
