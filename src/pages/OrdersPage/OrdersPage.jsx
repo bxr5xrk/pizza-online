@@ -25,22 +25,22 @@ const OrdersPage = () => {
     return (
         <div className="main">
             <div className={st.orders}>
+                <div className={st.orders__title}>
+                    <h1>Замовлення: </h1>
+                    <button onClick={() => dispatch(setAuth(false))}>
+                        Вийти
+                    </button>
+                </div>
+
                 {orders.length > 0 ? (
                     <>
-                        <div className={st.orders__title}>
-                            <h1>Замовлення: </h1>
-                            <button onClick={() => dispatch(setAuth(false))}>
-                                Вийти
-                            </button>
-                        </div>
-
                         <section className={st.orders__list}>
                             {orders.map((order, count) => (
                                 <OrderItem
                                     id={order.id}
                                     key={order.id}
                                     count={count + 1}
-                                    time={order.time}
+                                    time={order.time.slice(-5)}
                                     price={order.totalPrice}
                                     name={order.firstName}
                                     phone={order.phone}

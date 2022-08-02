@@ -25,8 +25,10 @@ const Cart = () => {
         postCartItems({
             items,
             totalPrice,
-            time: format(new Date(), "kk:mm"),
+            time: format(new Date(), "yyyy:MM:dd:kk:mm"),
             ...formData,
+            language: navigator.language,
+            screen: window.screen.availWidth,
         });
         dispatch(clearCart());
     };
