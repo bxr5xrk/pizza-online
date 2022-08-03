@@ -7,13 +7,13 @@ const PrivateHomePage = () => {
             <div className={st.wrapper}>
                 <img
                     className={st.pizza}
-                    src="../img/pizza_home.png"
+                    src="../img/pizza_home_compressed.png"
                     alt="logo"
                 />
 
                 <img
                     className={st.sushi}
-                    src="../img/sushi_home.png"
+                    src="../img/sushi_home_compressed.png"
                     alt="logo"
                 />
             </div>
