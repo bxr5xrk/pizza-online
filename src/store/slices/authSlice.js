@@ -1,12 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const getDataFromLS = () => {
-    const data = localStorage.getItem("isAuth");
-    return data ? JSON.parse(data) : false;
-};
-
 const initialState = {
-    isAuth: getDataFromLS(),
+    isAuth: false,
 };
 
 export const authSlice = createSlice({
@@ -19,7 +14,7 @@ export const authSlice = createSlice({
     },
 });
 
-export const selectAuth = (state) => state.authSlice
+export const selectAuth = (state) => state.authSlice;
 
 export const { setAuth } = authSlice.actions;
 
