@@ -41,10 +41,6 @@ function App() {
                         <Route path="/pizza/:id" element={<PizzaPage />} />
                         <Route path="/cart" element={<Cart />} />
                         <Route path="/login" element={<LoginPage />} />
-                        <Route
-                            path="/orders"
-                            element={<Navigate to="/" replace />}
-                        />
                         <Route path="*" element={<Page404 />} />
                     </Routes>
                 </Layout>

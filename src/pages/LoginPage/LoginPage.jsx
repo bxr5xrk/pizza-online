@@ -32,6 +32,7 @@ const LoginPage = () => {
         <form
             onSubmit={formik.handleSubmit}
             onClick={(e) => e.stopPropagation()}
+            className={st.form}
         >
             <input
                 id="login"
