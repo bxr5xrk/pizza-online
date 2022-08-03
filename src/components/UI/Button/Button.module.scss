@@ -1,4 +1,4 @@
-button {
+.button {
     padding: 15px;
     border-radius: 30px;
     font-weight: 700;
@@ -13,6 +13,7 @@ button {
     background-color: var(--orange);
     color: var(--white);
     border: 1px solid var(--orange);
+    transition: all 0.3s;
 
     &:hover {
         color: var(--orange);
@@ -24,6 +25,7 @@ button {
     background-color: var(--white);
     color: var(--grey);
     border: 1px solid var(--grey);
+    transition: all 0.3s;
 
     &:hover {
         color: var(--white);

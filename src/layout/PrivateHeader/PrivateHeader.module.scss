@@ -4,9 +4,42 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 20px 20px ;
+    padding: 20px;
     border-bottom: 1px solid #d4d4d4;
     margin:  0 10px;
+
+    .menu {
+        position: relative;
+        display: none;
+
+        svg {
+            cursor: pointer;
+        }
+
+        &__list {
+            z-index: 1;
+            position: absolute;
+            top: 40px;
+            left: 0;
+            padding: 10px 20px;
+            display: flex;
+            flex-direction: column;
+            border: 1px solid var(--grey);
+            background-color: var(--white);
+            border-radius: 20px;
+
+            .list__item {
+                padding: 5px 10px;
+                font-size: 20px;
+                text-align: center;
+                font-weight: 600;
+
+                &:hover {
+                    color: var(--orange);
+                }
+            }
+        }
+    }
 
     .item {
         font-size: 20px;
@@ -32,5 +65,17 @@
     button {
         padding: 10px 15px;
         font-size: 17px;
+    }
+
+    @media (max-width: 636px) {
+        padding: 10px;
+        
+        .nav {
+            display: none;
+        }
+
+        .menu {
+            display: flex;
+        }
     }
 }

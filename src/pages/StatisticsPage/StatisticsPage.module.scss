@@ -18,7 +18,7 @@
         fill: var(--orange);
         position: absolute;
         cursor: pointer;
-        top: 40px;
+        top: 45px;
         right: 0;
 
         &Active {
@@ -37,7 +37,6 @@
     }
 
     .stat {
-        margin-top: 20px;
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         grid-template-rows: 1fr;
@@ -57,6 +56,21 @@
     h2 {
         span {
             color: var(--orange);
+        }
+    }
+
+    @media (max-width: 984px) {
+        .title {
+            margin-bottom: 20px;
+        }
+
+        .stat {
+            grid-template-columns: 1fr;
+            grid-template-rows: repeat(3, 1fr);
+            gap: 20px 0;
+        }
+        h2 {
+            margin-top: 20px;
         }
     }
 }

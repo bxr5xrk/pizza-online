@@ -211,7 +211,6 @@
         }
 
         button {
-            transition: all 0.3s;
             svg {
                 path {
                     stroke: var(--grey);
@@ -277,7 +276,16 @@
                 padding: 10px 17px;
             }
         }
+    }
 
-        
+    @media (max-width: 425px) {
+        .cart__bottom {
+            button {
+                svg {
+                    display: none;
+                }
+                font-size: 15px;
+            }
+        }
     }
 }

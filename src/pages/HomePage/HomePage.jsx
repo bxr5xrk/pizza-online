@@ -34,8 +34,8 @@ const HomePage = () => {
                     <img
                         src="../img/sushi_home_compressed.png"
                         alt="sushi"
-                        width={160}
-                        height={160}
+                        width={150}
+                        height={150}
                     />
                     <h3>Суші</h3>
                     <p>Сет "Сакура"</p>

@@ -21,7 +21,7 @@ const OrderItem = ({ id, count, price, name, phone, orderItems, time }) => {
                     Ім'я: <span>{name[0].toUpperCase() + name.slice(1)}</span>
                 </p>
                 <p>
-                    Телефон: <span>{phone}</span>
+                    Номер: <span>{phone}</span>
                 </p>
                 <p>
                     Ціна: <span>{price} грн</span>
