@@ -14,6 +14,7 @@
     - SCSS, SCSS modules
         - flex
         - grid
+        - animations
 - Store
     - Redux-toolkit
 - other technologies

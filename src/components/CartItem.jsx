@@ -5,7 +5,7 @@ import {
     cartItemDecrement,
     removePizzaFromCart,
 } from "../store/slices/cartSlice";
-import st from "../pages/PublicPages/Cart/Cart.module.scss";
+import st from "../pages/Cart/Cart.module.scss";
 
 const CartItem = ({ id, title, count, image, size, edge, price }) => {
     const dispatch = useDispatch();

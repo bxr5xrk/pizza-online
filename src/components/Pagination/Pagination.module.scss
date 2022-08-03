@@ -15,6 +15,7 @@
         text-align: center;
         cursor: pointer;
         color: #fe5f1e;
+        transition: all 0.5s;
 
         &:hover {
             color: aliceblue;
@@ -33,7 +34,6 @@
         border-radius: 30px;
         width: 45px;
         height: 45px;
-        cursor: pointer;
         line-height: 42px;
         border: 1px solid var(--black);
         color: var(--black);

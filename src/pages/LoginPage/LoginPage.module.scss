@@ -1,0 +1,35 @@
+form {
+    margin: 0 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    border: 1px solid var(--white);
+    background-color: var(--white);
+    border-radius: 30px;
+    min-height: 100%;
+
+    p {
+        color: red;
+        font-size: 20px;
+        font-weight: 600;
+        margin: 10px 0;
+    }
+
+    button {
+        margin: 15px 0;
+        padding: 15px 25px;
+    }
+
+    input {
+        border: 1px solid var(--orange);
+        border-radius: 30px;
+        padding: 10px 25px;
+        margin: 10px 0;
+        font-size: 25px;
+
+        &:nth-child(2) {
+            padding-top: 13px;
+        }
+    }
+}

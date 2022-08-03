@@ -22,6 +22,7 @@ const PizzaList = () => {
         );
 
         document.title = "Піца";
+
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [pageParams, selectedCategory, selectedSort]);
 
@@ -31,10 +32,12 @@ const PizzaList = () => {
 
     return (
         <>
-            <h1 className={st.title}>Піца</h1>
+            <h1 className={st.title} id="title">
+                Піца
+            </h1>
             <div className={st.wrapper}>
                 {status === "loading"
-                    ? [...new Array(3)].map((_, key) => (
+                    ? [...new Array(6)].map((_, key) => (
                           <PizzaSkeleton key={key} />
                       ))
                     : pizza.map((item) => (

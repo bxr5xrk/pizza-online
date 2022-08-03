@@ -1,0 +1,50 @@
+.wrapper {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    align-items: center;
+
+    .pizza {
+        position: absolute;
+        width: 100px;
+        height: 100px;
+        animation: move 5s linear infinite normal forwards;
+        right: 300px;
+
+        @keyframes move {
+            0% {
+                top: 100px;
+            }
+
+            50% {
+                top: 200px;
+            }
+
+            100% {
+                top: 100px;
+            }
+        }
+    }
+    .sushi {
+        position: absolute;
+        width: 100px;
+        height: 100px;
+        animation: move2 5s linear infinite normal forwards;
+        left: 300px;
+
+        @keyframes move2 {
+            0% {
+                top: 200px;
+            }
+
+            50% {
+                top: 100px;
+            }
+
+            100% {
+                top: 200px;
+            }
+        }
+    }
+}
+

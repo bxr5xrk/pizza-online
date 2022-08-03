@@ -3,6 +3,7 @@ import * as Yup from "yup";
 import React, { useState } from "react";
 import st from "./CartModal.module.scss";
 import { useNavigate } from "react-router-dom";
+import Button from "../UI/Button/Button";
 
 const CartModal = ({ postItems, setShowModal }) => {
     const [showSuccessMessage, setShowSuccessMessage] = useState(false);
@@ -85,9 +86,9 @@ const CartModal = ({ postItems, setShowModal }) => {
                             {formik.touched.phone && formik.errors.phone && (
                                 <p>{formik.errors.phone}</p>
                             )}
-                            <button type="submit">
+                            <Button type="submit" appearance="primary">
                                 Підтвердити замовлення
-                            </button>
+                            </Button>
                         </>
                     )}
                 </form>

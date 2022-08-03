@@ -1,0 +1,41 @@
+.wrapper {
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row;
+    text-align: center;
+    align-items: center;
+    height: 100%;
+    padding: 10px 0;
+
+    .title {
+        color: var(--black);
+        font-size: 35px;
+        margin-bottom: 50px;
+    }
+
+    button:nth-child(1) {
+        margin-top: 50px;
+    }
+
+    @media (max-width: 961px) {
+        img {
+            width: 300px;
+            height: 300px;
+        }
+
+        .title {
+            margin-bottom: 20px;
+        }
+
+        .button {
+            margin-top: 20px;
+        }
+        
+    }
+
+    @media (max-width: 645px) {
+        flex-direction: column;
+        
+    }
+}
+

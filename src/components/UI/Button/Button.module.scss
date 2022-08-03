@@ -1,0 +1,32 @@
+button {
+    padding: 15px;
+    border-radius: 30px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.5s;
+    font-size: 17px;
+    display: inline-flex;
+    align-items: center;
+}
+
+.primary {
+    background-color: var(--orange);
+    color: var(--white);
+    border: 1px solid var(--orange);
+
+    &:hover {
+        color: var(--orange);
+        background-color: var(--white);
+    }
+}
+
+.ghost {
+    background-color: var(--white);
+    color: var(--grey);
+    border: 1px solid var(--grey);
+
+    &:hover {
+        color: var(--white);
+        background-color: var(--grey);
+    }
+}

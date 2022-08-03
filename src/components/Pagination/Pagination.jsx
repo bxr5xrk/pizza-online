@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
+import { Link } from "react-scroll";
 import { getTotalPizzaCount } from "../../api/PizzaService";
 import { selectFilter, setPage } from "../../store/slices/filterSlice";
 import { selectPizza } from "../../store/slices/pizzaSlice";
@@ -47,15 +48,20 @@ const Pagination = () => {
         <div className={st.pagination}>
             {status !== "loading" && pages > 1 && (
                 <>
-                    <span
+                    <Link
                         className={page !== 1 ? st.page : st.inactive}
                         onClick={() => page > 1 && changePage(page, "previous")}
+                        activeClass="active"
+                        to="title"
+                        spy={true}
+                        smooth={true}
+                        duration={500}
                     >
                         {"<"}
-                    </span>
+                    </Link>
 
                     {[...new Array(pages)].map((_, p) => (
-                        <span
+                        <Link
                             onClick={() => changePage(p + 1, "var")}
                             className={
                                 p + 1 === page
@@ -63,19 +69,29 @@ const Pagination = () => {
                                     : st.page
                             }
                             key={p}
+                            activeClass="active"
+                            to="title"
+                            spy={true}
+                            smooth={true}
+                            duration={500}
                         >
                             {p + 1}
-                        </span>
+                        </Link>
                     ))}
 
-                    <span
+                    <Link
+                        activeClass="active"
+                        to="title"
+                        spy={true}
+                        smooth={true}
+                        duration={500}
                         className={page !== pages ? st.page : st.inactive}
                         onClick={() =>
                             page === pages - 1 && changePage(page, "next")
                         }
                     >
                         {">"}
-                    </span>
+                    </Link>
                 </>
             )}
         </div>
