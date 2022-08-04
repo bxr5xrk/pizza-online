@@ -17,9 +17,13 @@ const PizzaPage = () => {
     useEffect(() => {
         dispatch(setSearchValue(""));
 
+        const findPizza = (id) => pizza.find((i) => i.id === id);
+
         pizza.length === 0
             ? fetchPizzaItem(id, setPizzaItem)
-            : setPizzaItem(pizza.find((i) => i.id === id));
+            : findPizza(id)
+            ? setPizzaItem(pizza.find((i) => i.id === id))
+            : fetchPizzaItem(id, setPizzaItem);
 
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
