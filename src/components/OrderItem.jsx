@@ -24,7 +24,7 @@ const OrderItem = ({ id, count, price, name, phone, orderItems, time }) => {
                     Номер: <span>{phone}</span>
                 </p>
                 <p>
-                    Ціна: <span>{price} грн</span>
+                    Сума: <span>{price} грн</span>
                 </p>
             </div>
             <div className={st.list}>
