@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { getOrderHistory } from "../../api/PizzaService";
-import { calculateCountItems } from "../../utils/workingWithArrays";
+import {
+    calculateCountItems,
+    calculatePizzaItemsCount,
+} from "../../utils/workingWithArrays";
 import st from "./StatisticsPage.module.scss";
 
 const statInfo = (title, arr) => {
@@ -9,7 +12,20 @@ const statInfo = (title, arr) => {
             <h3>{title}</h3>
             {calculateCountItems(arr).map((i, count) => (
                 <p key={count}>
-                    <span>{i.item}</span> , кількість: <span>{i.count}</span>
+                    <span>{i.item}</span>, кількість: <span>{i.count}</span>
+                </p>
+            ))}
+        </div>
+    );
+};
+
+const statPizzaInfo = (title, arr) => {
+    return (
+        <div>
+            <h3>{title}</h3>
+            {calculatePizzaItemsCount(arr).map((i, count) => (
+                <p key={count}>
+                    <span>{i.item}</span>, кількість: <span>{i.count}</span>
                 </p>
             ))}
         </div>
@@ -33,7 +49,11 @@ const StatisticsPage = () => {
         setPrices(data.map((i) => i.totalPrice));
         setScreens(data.map((i) => i.screen));
         setLanguages(data.map((i) => i.language));
-        setPizzas(data.map((i) => i.items.map((j) => j.title)));
+        setPizzas(
+            data.map((i) =>
+                i.items.map((j) => ({ pizza: j.title, count: j.count }))
+            )
+        );
     }, [data]);
 
     const onClickSvg = () => {
@@ -80,19 +100,25 @@ const StatisticsPage = () => {
 
                     <div>
                         <div className={st.stat}>
-                            {statInfo("Піци:", [].concat.apply([], pizzas))}
+                            {statPizzaInfo("Піци:", pizzas)}
                             {statInfo("Розширення екранів:", screens)}
                             {statInfo("Мови:", languages)}
-                        </div>{" "}
+                        </div>
                     </div>
-                    <h2>
-                        Загальна сума замовлень:{" "}
-                        <span>
-                            {prices.length > 1 &&
-                                prices.reduce((total, i) => total + i)}{" "}
-                            грн.
-                        </span>
-                    </h2>
+                    <div className={st.bottom}>
+                        <h2>
+                            Загальна кількість замовлень:{" "}
+                            <span>{data.length}</span>
+                        </h2>
+                        <h2>
+                            Загальна сума замовлень:{" "}
+                            <span>
+                                {prices.length > 1 &&
+                                    prices.reduce((total, i) => total + i)}{" "}
+                                грн.
+                            </span>
+                        </h2>
+                    </div>
                 </>
             ) : (
                 <p>Заванатження...</p>
