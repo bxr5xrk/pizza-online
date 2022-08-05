@@ -1,20 +1,29 @@
 .home {
     justify-content: center;
     display: grid;
-    grid-template-rows: auto 1fr auto;
+    grid-template-rows: auto 1fr 1fr auto;
     text-align: center;
     min-height: 100%;
     padding: 40px 0;
     position: relative;
+    align-items: center;
 
     h1 {
         font-size: 40px;
+    }
+
+    @media (max-width: 893px) {
+        gap: 20px;
     }
 
     .cards {
         display: flex;
         justify-content: center;
         align-items: center;
+
+        @media (max-width: 893px) {
+            margin-top: 30px;
+        }
 
         .card {
             margin: 20px;

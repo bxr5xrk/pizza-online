@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import Slider from "../../components/Slider/Slider";
 import Button from "../../components/UI/Button/Button";
 import st from "./HomePage.module.scss";
 
@@ -38,7 +39,7 @@ const HomePage = () => {
                         height={150}
                     />
                     <h3>Суші</h3>
-                    <p>Сет "Сакура"</p>
+                    <p>Сет "кура"</p>
                     <p>Від 330 грн</p>
                     <Link to="/">
                         <span>Перейти</span>
@@ -46,6 +47,9 @@ const HomePage = () => {
                     <p className={st.soon}>скоро</p>
                 </div>
             </div>
+
+            <Slider />
+
             <Link to="/login">
                 <Button appearance="primary">Увійти в особистий кабінет</Button>
             </Link>
