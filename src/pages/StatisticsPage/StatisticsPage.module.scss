@@ -39,13 +39,17 @@
     .stat {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
-        grid-template-rows: 1fr;
-        gap: 0 30px;
+        grid-template-rows: repeat(2, 1fr);
+        gap: 30px;
 
         div {
             border: 1px solid var(--grey);
             border-radius: 30px;
             padding: 10px;
+
+            &:nth-child(4) {
+                grid-column: 1/4;
+            }
 
             span {
                 font-weight: 600;
@@ -68,10 +72,18 @@
         }
 
         .stat {
+            display: grid;
             grid-template-columns: 1fr;
             grid-template-rows: repeat(3, 1fr);
             gap: 20px 0;
+
+            div {
+                &:nth-child(4) {
+                    grid-column: 1/4;
+                }
+            }
         }
+
         h2 {
             font-size: 17px;
         }

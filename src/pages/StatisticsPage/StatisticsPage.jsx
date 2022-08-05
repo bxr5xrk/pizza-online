@@ -2,15 +2,16 @@ import React, { useEffect, useState } from "react";
 import { getOrderHistory } from "../../api/PizzaService";
 import {
     calculateCountItems,
+    calculateIncomePerMonth,
     calculatePizzaItemsCount,
 } from "../../utils/workingWithArrays";
 import st from "./StatisticsPage.module.scss";
 
-const statInfo = (title, arr) => {
+const statOutput = (title, arr, calculateFunc) => {
     return (
         <div>
             <h3>{title}</h3>
-            {calculateCountItems(arr).map((i, count) => (
+            {calculateFunc(arr).map((i, count) => (
                 <p key={count}>
                     <span>{i.item}</span>, кількість: <span>{i.count}</span>
                 </p>
@@ -19,13 +20,15 @@ const statInfo = (title, arr) => {
     );
 };
 
-const statPizzaInfo = (title, arr) => {
+const statIncomeInfo = (title, arr) => {
     return (
         <div>
             <h3>{title}</h3>
-            {calculatePizzaItemsCount(arr).map((i, count) => (
+            {calculateIncomePerMonth(arr).map((i, count) => (
                 <p key={count}>
-                    <span>{i.item}</span>, кількість: <span>{i.count}</span>
+                    <span>{`${i.date.slice(0, 4)} ${i.date.slice(5)}`}</span>,
+                    сума: <span>{i.price} грн</span>, кількість замовлень:{" "}
+                    <span>{i.count}</span>
                 </p>
             ))}
         </div>
@@ -98,13 +101,17 @@ const StatisticsPage = () => {
 
                     <h1 className={st.title}>Статистика: </h1>
 
-                    <div>
-                        <div className={st.stat}>
-                            {statPizzaInfo("Піци:", pizzas)}
-                            {statInfo("Розширення екранів:", screens)}
-                            {statInfo("Мови:", languages)}
-                        </div>
+                    <div className={st.stat}>
+                        {statOutput("Піци:", pizzas, calculatePizzaItemsCount)}
+                        {statOutput(
+                            "Розширення екранів:",
+                            screens,
+                            calculateCountItems
+                        )}
+                        {statOutput("Мови:", languages, calculateCountItems)}
+                        {statIncomeInfo("Виручка", data)}
                     </div>
+
                     <div className={st.bottom}>
                         <h2>
                             Загальна кількість замовлень:{" "}

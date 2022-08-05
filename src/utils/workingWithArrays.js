@@ -28,3 +28,31 @@ export const calculatePizzaItemsCount = (pizzaObj) => {
 
     return newArr.sort((a, b) => (b.count > a.count ? 1 : -1));
 };
+
+export const calculateIncomePerMonth = (arr) => {
+    const newArr = [];
+    newArr.push({
+        date: arr[0].time.slice(0, 7),
+        price: arr[0].totalPrice,
+        count: 1,
+    });
+
+    const findedItem = (item) =>
+        newArr.find((i) => i.date.slice(0, 7) === item.slice(0, 7));
+
+    arr.slice(1).forEach((i) => {
+        const item = findedItem(i.time);
+
+        if (item) {
+            item.price += i.totalPrice;
+            item.count++;
+        } else {
+            newArr.push({
+                date: i.time.slice(0, 7),
+                price: i.totalPrice,
+                count: 1,
+            });
+        }
+    });
+    return newArr.sort((a, b) => (b.count > a.count ? 1 : -1));
+};
