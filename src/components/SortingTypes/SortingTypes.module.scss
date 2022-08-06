@@ -141,7 +141,7 @@
     }
     @media (max-width: 1225px) {
         grid-template-rows: auto auto;
-        grid-template-columns: auto auto;
+        grid-template-columns: auto 1fr;
         gap: 20px 0;
         grid-template-areas: 
         "categories categories"
