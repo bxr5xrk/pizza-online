@@ -20,7 +20,7 @@ const data = [
     {
         id: 4,
         href: "https://dodopizza.azureedge.net/static/Img/Products/Pizza/ru-RU/d48003cd-902c-420d-9f28-92d9dc5f73b4.jpg",
-        title: "Мргарита",
+        title: "Маргарита",
     },
     {
         id: 5,
@@ -49,72 +49,37 @@ const Slider = () => {
         <div className={st.wrapper}>
             <h2 className={st.title}>Асортимент: </h2>
 
-            {data.map((i, index) => (
-                <div className={st.slider} key={i.id}>
-                    {current === index && (
-                        <>
-                            <div className={st.item}>
-                                <img
-                                    src={
-                                        data[
-                                            current === 0 ? length : current - 1
-                                        ].href
-                                    }
-                                    alt={
-                                        data[
-                                            current === 0 ? length : current - 1
-                                        ].title
-                                    }
-                                    width={200}
-                                    height={200}
-                                />
-                                <h3>
-                                    {
-                                        data[
-                                            current === 0 ? length : current - 1
-                                        ].title
-                                    }
-                                </h3>
-                            </div>
-
-                            <div className={st.active}>
-                                <img
-                                    src={i.href}
-                                    alt={i.title}
-                                    width={300}
-                                    height={300}
-                                    style={{ marginLeft: "10px" }}
-                                />
-                                <h3>{i.title}</h3>
-                            </div>
-
-                            <div className={st.item}>
-                                <img
-                                    src={
-                                        data[
-                                            current === length ? 0 : current + 1
-                                        ].href
-                                    }
-                                    alt={
-                                        data[
-                                            current === length ? 0 : current + 1
-                                        ].title
-                                    }
-                                    width={200}
-                                    height={200}
-                                />
-                                <h3>
-                                    {
-                                        data[
-                                            current === length ? 0 : current + 1
-                                        ].title
-                                    }
-                                </h3>
-                            </div>
-                        </>
-                    )}
+            <div className={st.slider}>
+                <div className={st.item}>
+                    <img
+                        src={data[current === 0 ? length : current - 1].href}
+                        alt={data[current === 0 ? length : current - 1].title}
+                        width={200}
+                        height={200}
+                    />
+                    <h3>{data[current === 0 ? length : current - 1].title}</h3>
                 </div>
-            ))}
+                <div className={st.active}>
+                    <img
+                        src={data[current].href}
+                        alt={data[current].title}
+                        width={300}
+                        height={300}
+                        style={{ marginLeft: "10px" }}
+                    />
+                    <h3>{data[current].title}</h3>
+                </div>
+
+                <div className={st.item}>
+                    <img
+                        src={data[current === length ? 0 : current + 1].href}
+                        alt={data[current === length ? 0 : current + 1].title}
+                        width={200}
+                        height={200}
+                    />
+                    <h3>{data[current === length ? 0 : current + 1].title}</h3>
+                </div>
+            </div>
         </div>
     );
 };
