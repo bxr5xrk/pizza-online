@@ -20,3 +20,5 @@
 - other technologies
     - Git
     - Regex
+    - LocalStorage
+    - Cookies
