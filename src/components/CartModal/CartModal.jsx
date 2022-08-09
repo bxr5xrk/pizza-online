@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Button from "../UI/Button/Button";
 import st from "./CartModal.module.scss";
+import { useCookie } from "../../utils/useCookie";
 
 const CartModal = ({ postItems, setShowModal }) => {
     const [showSuccessMessage, setShowSuccessMessage] = useState(false);
@@ -11,8 +12,8 @@ const CartModal = ({ postItems, setShowModal }) => {
 
     const formik = useFormik({
         initialValues: {
-            firstName: "",
-            phone: "+380",
+            phone: useCookie("phone"),
+            firstName: useCookie("name"),
         },
         validationSchema: Yup.object({
             firstName: Yup.string()
@@ -30,6 +31,8 @@ const CartModal = ({ postItems, setShowModal }) => {
         }),
         onSubmit: (values) => {
             setShowSuccessMessage(true);
+            document.cookie = `name=${formik.values.firstName}`;
+            document.cookie = `phone=${formik.values.phone}`;
             postItems(values);
         },
     });
