@@ -29,6 +29,23 @@ const data = [
     },
 ];
 
+const sliderItem = (type, current, length) => {
+    const next = current === length ? 0 : current + 1;
+    const previous = current === 0 ? length : current - 1;
+
+    return (
+        <div className={st.item}>
+            <img
+                src={data[type === "next" ? next : previous].href}
+                alt={data[type === "next" ? next : previous].title}
+                width={200}
+                height={200}
+            />
+            <h3>{data[type === "next" ? next : previous].title}</h3>
+        </div>
+    );
+};
+
 const Slider = () => {
     const updateTime = 3_000;
     const [time, setTime] = useState(Date.now());
@@ -50,15 +67,8 @@ const Slider = () => {
             <h2 className={st.title}>Асортимент: </h2>
 
             <div className={st.slider}>
-                <div className={st.item}>
-                    <img
-                        src={data[current === 0 ? length : current - 1].href}
-                        alt={data[current === 0 ? length : current - 1].title}
-                        width={200}
-                        height={200}
-                    />
-                    <h3>{data[current === 0 ? length : current - 1].title}</h3>
-                </div>
+                {sliderItem("previous", current, length)}
+
                 <div className={st.active}>
                     <img
                         src={data[current].href}
@@ -70,15 +80,7 @@ const Slider = () => {
                     <h3>{data[current].title}</h3>
                 </div>
 
-                <div className={st.item}>
-                    <img
-                        src={data[current === length ? 0 : current + 1].href}
-                        alt={data[current === length ? 0 : current + 1].title}
-                        width={200}
-                        height={200}
-                    />
-                    <h3>{data[current === length ? 0 : current + 1].title}</h3>
-                </div>
+                {sliderItem("next", current, length)}
             </div>
         </div>
     );
