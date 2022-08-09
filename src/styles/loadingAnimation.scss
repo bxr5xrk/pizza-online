@@ -1,0 +1,18 @@
+.homeLoading {
+    animation: scale 1s infinite linear;
+    font-size: 17px;
+    font-weight: 600;
+
+    @keyframes scale {
+        0% {
+            color: var(--black);
+        }
+        50% {
+            color: var(--orange);
+        }
+        100% {
+            color: var(--black);
+        }
+    }
+}
+  
