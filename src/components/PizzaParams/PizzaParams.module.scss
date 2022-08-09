@@ -7,7 +7,7 @@
     padding: 5px;
     font-size: 16px;
 
-    .edges{
+    .edges {
         margin: 6px 0;
         font-weight: 600;
     }
@@ -54,7 +54,8 @@
         font-weight: 700;
         cursor: pointer;
         color: var(--orange);
-        transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
+        transition: background-color 0.15s ease-in-out,
+            border-color 0.15s ease-in-out;
         border: 1px solid var(--orange);
 
         span {
