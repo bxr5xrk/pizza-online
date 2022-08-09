@@ -12,7 +12,13 @@ const HomePage = () => {
         <section className={st.home}>
             <h1>PIZZA ONLINE</h1>
 
-            <Suspense fallback={<p className="homeLoading">Завантаження...</p>}>
+            <Suspense
+                fallback={
+                    <p style={{ fontWeight: 700, fontSize: "17px" }}>
+                        Завантаження...
+                    </p>
+                }
+            >
                 <HomeCards />
                 <Slider />
             </Suspense>
