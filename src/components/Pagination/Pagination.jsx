@@ -27,13 +27,10 @@ const Pagination = () => {
 
     const changePage = (page, variant) => {
         if (variant === "previous") {
-            page > 1 && dispatch(setPage(page - 1));
             navigate(`../pizzas/p=${page - 1}`);
         } else if (variant === "next") {
-            page < pages && dispatch(setPage(page + 1));
             navigate(`../pizzas/p=${page + 1}`);
         } else {
-            dispatch(setPage(page));
             navigate(`../pizzas/p=${page}`);
         }
     };
