@@ -1,9 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
-
-const API_PIZZA = "https://62d8222f9c8b5185c783bcb2.mockapi.io/pizza";
-const API_ORDERS = process.env.REACT_APP_API_ORDERS;
-const API_ALL_ORDERS = process.env.REACT_APP_API_ALL_ORDERS;
+import { API_ALL_ORDERS, API_ORDERS, API_PIZZA } from "../config";
 
 // ==================== pizza ====================
 export const fetchPizza = createAsyncThunk(
