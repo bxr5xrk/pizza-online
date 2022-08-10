@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { getOrderHistory } from "../../api/PizzaService";
+import { getOrderHistory } from "../../../api/PizzaService";
 import {
     calculateCountItems,
     calculateIncomePerMonth,
     calculatePizzaItemsCount,
-} from "../../utils/workingWithArrays";
+} from "../../../utils/workingWithArrays";
 import st from "./StatisticsPage.module.scss";
 
 const statOutput = (title, arr, calculateFunc) => {

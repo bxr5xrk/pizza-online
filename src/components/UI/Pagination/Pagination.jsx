@@ -2,9 +2,9 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import { Link } from "react-scroll";
-import { getTotalPizzaCount } from "../../api/PizzaService";
-import { selectFilter, setPage } from "../../store/slices/filterSlice";
-import { selectPizza } from "../../store/slices/pizzaSlice";
+import { getTotalPizzaCount } from "../../../api/PizzaService";
+import { selectFilter, setPage } from "../../../store/slices/filterSlice";
+import { selectPizza } from "../../../store/slices/pizzaSlice";
 import st from "./Pagination.module.scss";
 
 const Pagination = () => {

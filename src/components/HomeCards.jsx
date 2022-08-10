@@ -1,5 +1,5 @@
 import React from "react";
-import st from "../pages/HomePage/HomePage.module.scss";
+import st from "../pages/publicPages/HomePage/HomePage.module.scss";
 import { Link } from "react-router-dom";
 
 const cards = [

@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
-import { fetchPizzaItem } from "../../api/PizzaService";
-import PizzaParams from "../../components/PizzaParams/PizzaParams";
-import Button from "../../components/UI/Button/Button";
-import { setSearchValue } from "../../store/slices/filterSlice";
-import { selectPizza } from "../../store/slices/pizzaSlice";
+import { fetchPizzaItem } from "../../../api/PizzaService";
+import PizzaParams from "../../../components/PizzaParams/PizzaParams";
+import Button from "../../../components/UI/Button/Button";
+import { setSearchValue } from "../../../store/slices/filterSlice";
+import { selectPizza } from "../../../store/slices/pizzaSlice";
 import st from "./PizzaPage.module.scss";
 
 const PizzaPage = () => {

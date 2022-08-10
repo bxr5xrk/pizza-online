@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { searchPizza } from "../api/PizzaService";
 import { setSearchValue, setSuitablePizza } from "../store/slices/searchSlice";
 import { selectSearch } from "../store/slices/searchSlice";
-import { useDebounce } from "../utils/useDebounce";
+import { useDebounce } from "../hooks/useDebounce";
 import st from "./SortingTypes/SortingTypes.module.scss";
 
 const PizzaSearch = () => {

@@ -2,11 +2,11 @@ import { format } from "date-fns";
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { postCartItems } from "../../api/PizzaService";
-import CartItem from "../../components/CartItem";
-import CartModal from "../../components/CartModal/CartModal";
-import Button from "../../components/UI/Button/Button";
-import { clearCart, selectCart } from "../../store/slices/cartSlice";
+import { postCartItems } from "../../../api/PizzaService";
+import CartItem from "../../../components/CartItem";
+import CartModal from "../../../components/CartModal/CartModal";
+import Button from "../../../components/UI/Button/Button";
+import { clearCart, selectCart } from "../../../store/slices/cartSlice";
 import st from "./Cart.module.scss";
 
 const Cart = () => {

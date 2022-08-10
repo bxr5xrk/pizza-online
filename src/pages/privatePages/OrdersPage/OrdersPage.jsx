@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { getOrderItems } from "../../api/PizzaService";
-import OrderItem from "../../components/OrderItem";
+import { getOrderItems } from "../../../api/PizzaService";
+import OrderItem from "../../../components/OrderItem";
 import st from "./OrdersPage.module.scss";
 
 const OrdersPage = () => {

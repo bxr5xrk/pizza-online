@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Button from "../UI/Button/Button";
 import st from "./CartModal.module.scss";
-import { useCookie } from "../../utils/useCookie";
+import { useCookie } from "../../hooks/useCookie";
 
 const CartModal = ({ postItems, setShowModal }) => {
     const [showSuccessMessage, setShowSuccessMessage] = useState(false);

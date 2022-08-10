@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Button from "../../components/UI/Button/Button";
+import Button from "../../../components/UI/Button/Button";
 import st from "./Page404.module.scss";
 
 const Page404 = () => {

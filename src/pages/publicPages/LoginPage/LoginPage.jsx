@@ -3,8 +3,8 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import * as Yup from "yup";
-import Button from "../../components/UI/Button/Button";
-import { setAuth } from "../../store/slices/authSlice";
+import Button from "../../../components/UI/Button/Button";
+import { setAuth } from "../../../store/slices/authSlice";
 import st from "./LoginPage.module.scss";
 
 const LoginPage = () => {

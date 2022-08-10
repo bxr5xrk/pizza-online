@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { removeOrderItem } from "../api/PizzaService";
-import st from "../pages/OrdersPage/OrdersPage.module.scss";
+import st from "../pages/privatePages/OrdersPage/OrdersPage.module.scss";
 
 const OrderItem = ({ id, count, price, name, phone, orderItems, time }) => {
     const [showMessage, setShowMessage] = useState(false);
